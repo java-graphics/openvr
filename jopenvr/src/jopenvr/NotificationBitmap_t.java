@@ -25,6 +25,7 @@ public class NotificationBitmap_t extends Structure {
         super();
     }
 
+    @Override
     protected List<?> getFieldOrder() {
         return Arrays.asList("bytes", "width", "height", "depth");
     }
@@ -46,10 +47,8 @@ public class NotificationBitmap_t extends Structure {
     }
 
     public static class ByReference extends NotificationBitmap_t implements Structure.ByReference {
-
     };
 
     public static class ByValue extends NotificationBitmap_t implements Structure.ByValue {
-
     };
 }

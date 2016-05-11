@@ -661,6 +661,11 @@ public class OpenVR implements Library {
     };
 
     /**
+     * The maximum length of an application key.
+     */
+    public static final int k_unMaxApplicationKeyLength = 128;
+
+    /**
      * these are the properties available on applications.
      */
     public static interface EVRApplicationProperty {
@@ -686,60 +691,130 @@ public class OpenVR implements Library {
     };
 
     /**
-     * enum values
+     * These are states the scene application startup process will go through.
      */
     public static interface EVRApplicationTransitionState {
 
-        public static final int EVRApplicationTransitionState_VRApplicationTransition_None = 0;
-        public static final int EVRApplicationTransitionState_VRApplicationTransition_OldAppQuitSent = 10;
-        public static final int EVRApplicationTransitionState_VRApplicationTransition_WaitingForExternalLaunch = 11;
-        public static final int EVRApplicationTransitionState_VRApplicationTransition_NewAppLaunched = 20;
+        public static final int VRApplicationTransition_None = 0;
+
+        public static final int VRApplicationTransition_OldAppQuitSent = 10;
+        public static final int VRApplicationTransition_WaitingForExternalLaunch = 11;
+
+        public static final int VRApplicationTransition_NewAppLaunched = 20;
     };
 
-    /**
-     * enum values
-     */
     public static interface ChaperoneCalibrationState {
 
-        public static final int ChaperoneCalibrationState_OK = 1;
+        // OK!
+        public static final int ChaperoneCalibrationState_OK = 1;   // Chaperone is fully calibrated and working correctly
+
+        // Warnings
         public static final int ChaperoneCalibrationState_Warning = 100;
+        // A base station thinks that it might have moved
         public static final int ChaperoneCalibrationState_Warning_BaseStationMayHaveMoved = 101;
+        // There are less base stations than when calibrated
         public static final int ChaperoneCalibrationState_Warning_BaseStationRemoved = 102;
+        // Seated bounds haven't been calibrated for the current tracking center
         public static final int ChaperoneCalibrationState_Warning_SeatedBoundsInvalid = 103;
-        public static final int ChaperoneCalibrationState_Error = 200;
+
+        // Errors
+        public static final int ChaperoneCalibrationState_Error = 200;  // The UniverseID is invalid
+        // Tracking center hasn't be calibrated for at least one of the base stations
         public static final int ChaperoneCalibrationState_Error_BaseStationUninitalized = 201;
+        // Tracking center is calibrated, but base stations disagree on the tracking space
         public static final int ChaperoneCalibrationState_Error_BaseStationConflict = 202;
+        // Play Area hasn't been calibrated for the current tracking center
         public static final int ChaperoneCalibrationState_Error_PlayAreaInvalid = 203;
+        // Collision Bounds haven't been calibrated for the current tracking center
         public static final int ChaperoneCalibrationState_Error_CollisionBoundsInvalid = 204;
     };
 
-    /**
-     * enum values
-     */
     public static interface EChaperoneConfigFile {
 
+        // The live chaperone config, used by most applications and games
         public static final int EChaperoneConfigFile_Live = 1;
+        // The temporary chaperone config, used to live-preview collision bounds in room setup
         public static final int EChaperoneConfigFile_Temp = 2;
     };
 
-    /**
-     * enum values
-     */
-    public static interface EVRCompositorError {
+    public static interface EChaperoneImportFlags {
 
-        public static final int EVRCompositorError_VRCompositorError_None = 0;
-        public static final int EVRCompositorError_VRCompositorError_IncompatibleVersion = 100;
-        public static final int EVRCompositorError_VRCompositorError_DoNotHaveFocus = 101;
-        public static final int EVRCompositorError_VRCompositorError_InvalidTexture = 102;
-        public static final int EVRCompositorError_VRCompositorError_IsNotSceneApplication = 103;
-        public static final int EVRCompositorError_VRCompositorError_TextureIsOnWrongDevice = 104;
-        public static final int EVRCompositorError_VRCompositorError_TextureUsesUnsupportedFormat = 105;
-        public static final int EVRCompositorError_VRCompositorError_SharedTexturesNotSupported = 106;
-        public static final int EVRCompositorError_VRCompositorError_IndexOutOfRange = 107;
+        public static final int EChaperoneImport_BoundsOnly = 0x0001;
     };
 
     /**
-     * enum values
+     * Errors that can occur with the VR compositor
+     */
+    public static interface EVRCompositorError {
+
+        public static final int VRCompositorError_None = 0;
+        public static final int VRCompositorError_IncompatibleVersion = 100;
+        public static final int VRCompositorError_DoNotHaveFocus = 101;
+        public static final int VRCompositorError_InvalidTexture = 102;
+        public static final int VRCompositorError_IsNotSceneApplication = 103;
+        public static final int VRCompositorError_TextureIsOnWrongDevice = 104;
+        public static final int VRCompositorError_TextureUsesUnsupportedFormat = 105;
+        public static final int VRCompositorError_SharedTexturesNotSupported = 106;
+        public static final int VRCompositorError_IndexOutOfRange = 107;
+    };
+
+    public static final int VRCompositor_ReprojectionReason_Cpu = 0x01;
+    public static final int VRCompositor_ReprojectionReason_Gpu = 0x02;
+
+    public static interface EVRNotificationType {
+
+        /**
+         * Transient notifications are automatically hidden after a period of time set by the user.
+         * They are used for things like information and chat messages that do not require user interaction.
+         */
+        public static final int EVRNotificationType_Transient = 0;
+        /**
+         * Persistent notifications are shown to the user until they are hidden by calling RemoveNotification().
+         * They are used for things like phone calls and alarms that require user interaction.
+         */
+        public static final int EVRNotificationType_Persistent = 1;
+    };
+
+    public static interface EVRNotificationStyle {
+
+        /**
+         * Creates a notification with minimal external styling.
+         */
+        public static final int EVRNotificationStyle_None = 0;
+        /**
+         * Used for notifications about overlay-level status. In Steam this is used for events like downloads completing.
+         */
+        public static final int EVRNotificationStyle_Application = 100;
+        /**
+         * Used for notifications about contacts that are unknown or not available. In Steam this is used for friend invitations and offline friends.
+         */
+        public static final int EVRNotificationStyle_Contact_Disabled = 200;
+        /**
+         * Used for notifications about contacts that are available but inactive. In Steam this is used for friends that are online but not playing a game.
+         */
+        public static final int EVRNotificationStyle_Contact_Enabled = 201;
+        /**
+         * Used for notifications about contacts that are available and active. In Steam this is used for friends that are online and currently running a game.
+         */
+        public static final int EVRNotificationStyle_Contact_Active = 202;
+    };
+
+    public static final int k_unNotificationTextMaxSize = 256;
+    /**
+     * The maximum length of an overlay name in bytes, counting the terminating null character.
+     */
+    public static final int k_unVROverlayMaxKeyLength = 128;
+    /**
+     * The maximum number of overlays that can exist in the system at one time.
+     */
+    public static final int k_unVROverlayMaxNameLength = 128;
+    /**
+     * The maximum number of overlays that can exist in the system at one time.
+     */
+    public static final int k_unMaxOverlayCount = 32;
+
+    /**
+     * Types of input supported by VR Overlays
      */
     public static interface VROverlayInputMethod {
 
@@ -837,27 +912,6 @@ public class OpenVR implements Library {
     /**
      * enum values
      */
-    public static interface EVRNotificationType {
-
-        public static final int EVRNotificationType_Transient = 0;
-        public static final int EVRNotificationType_Persistent = 1;
-    };
-
-    /**
-     * enum values
-     */
-    public static interface EVRNotificationStyle {
-
-        public static final int EVRNotificationStyle_None = 0;
-        public static final int EVRNotificationStyle_Application = 100;
-        public static final int EVRNotificationStyle_Contact_Disabled = 200;
-        public static final int EVRNotificationStyle_Contact_Enabled = 201;
-        public static final int EVRNotificationStyle_Contact_Active = 202;
-    };
-
-    /**
-     * enum values
-     */
     public static interface EVRSettingsError {
 
         public static final int EVRSettingsError_VRSettingsError_None = 0;
@@ -878,11 +932,6 @@ public class OpenVR implements Library {
         public static final int ECameraVideoStreamFormat_CVS_MAX_FORMATS = 4;
     };
 
-    public static final int k_unMaxApplicationKeyLength = 128;
-    public static final int k_unVROverlayMaxKeyLength = 128;
-    public static final int k_unVROverlayMaxNameLength = 128;
-    public static final int k_unMaxOverlayCount = 32;
-    public static final int k_unNotificationTextMaxSize = 256;
     public static final int k_unMaxSettingsKeyLength = 128;
 
     /**
