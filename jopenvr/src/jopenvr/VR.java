@@ -13,7 +13,7 @@ import java.nio.IntBuffer;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class OpenVR implements Library {
+public class VR implements Library {
 
     public static final String JNA_LIBRARY_NAME = "openvr_api";
 //    public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(OpenVR.JNA_LIBRARY_NAME);
@@ -21,23 +21,23 @@ public class OpenVR implements Library {
 
     static {
         System.loadLibrary(JNA_LIBRARY_NAME);
-        JNA_NATIVE_LIB = NativeLibrary.getInstance(OpenVR.JNA_LIBRARY_NAME);
-        Native.register(OpenVR.class, OpenVR.JNA_NATIVE_LIB);
+        JNA_NATIVE_LIB = NativeLibrary.getInstance(VR.JNA_LIBRARY_NAME);
+        Native.register(VR.class, VR.JNA_NATIVE_LIB);
     }
 
-    public static interface EVREye {
+    public static class EVREye {
 
         public static final int Eye_Left = 0;
         public static final int Eye_Right = 1;
     };
 
-    public static interface EGraphicsAPIConvention {
+    public static class EGraphicsAPIConvention {
 
         public static final int API_DirectX = 0; // Normalized Z goes from 0 at the viewer to 1 at the far clip plane
         public static final int API_OpenGL = 1; // Normalized Z goes from 1 at the viewer to -1 at the far clip plane
     };
 
-    public static interface EColorSpace {
+    public static class EColorSpace {
 
         /**
          * Assumes 'gamma' for 8-bit per component formats, otherwise 'linear'.
@@ -50,7 +50,7 @@ public class OpenVR implements Library {
         public static final int ColorSpace_Linear = 2;
     };
 
-    public static interface ETrackingResult {
+    public static class ETrackingResult {
 
         public static final int TrackingResult_Uninitialized = 1;
         public static final int TrackingResult_Calibrating_InProgress = 100;
@@ -69,7 +69,7 @@ public class OpenVR implements Library {
     /**
      * Describes what kind of object is being tracked at a given ID.
      */
-    public static interface ETrackedDeviceClass {
+    public static class ETrackedDeviceClass {
 
         public static final int TrackedDeviceClass_Invalid = 0; // the ID was not valid.
         public static final int TrackedDeviceClass_HMD = 1; // Head-Mounted Displays
@@ -83,7 +83,7 @@ public class OpenVR implements Library {
     /**
      * Describes what specific role associated with a tracked device
      */
-    public static interface ETrackedControllerRole {
+    public static class ETrackedControllerRole {
 
         public static final int TrackedControllerRole_Invalid = 0; // Invalid value for controller type
         public static final int TrackedControllerRole_LeftHand = 1; // Tracked device associated with the left hand
@@ -94,7 +94,7 @@ public class OpenVR implements Library {
      * Identifies which style of tracking origin the application wants to use
      * for the poses it is requesting.
      */
-    public static interface ETrackingUniverseOrigin {
+    public static class ETrackingUniverseOrigin {
 
         // Poses are provided relative to the seated zero pose
         public static final int TrackingUniverseSeated = 0;
@@ -108,7 +108,7 @@ public class OpenVR implements Library {
      * Each entry in this enum represents a property that can be retrieved about a
      * tracked device. Many fields are only valid for one ETrackedDeviceClass.
      */
-    public static interface ETrackedDeviceProperty {
+    public static class ETrackedDeviceProperty {
 
         // general properties that apply to all device classes
         public static final int Prop_TrackingSystemName_String = 1000;
@@ -211,7 +211,7 @@ public class OpenVR implements Library {
     /**
      * Used to return errors that occur when reading properties.
      */
-    public static interface ETrackedPropertyError {
+    public static class ETrackedPropertyError {
 
         public static final int TrackedProp_Success = 0;
         public static final int TrackedProp_WrongDataType = 1;
@@ -229,7 +229,7 @@ public class OpenVR implements Library {
     /**
      * Allows the applicaiton to control how scene textures are used by the compositor when calling Submit.
      */
-    public static interface EVRSubmitFlags {
+    public static class EVRSubmitFlags {
 
         // Simple render path. App submits rendered left and right eye images with no lens distortion correction applied.
         public static final int Submit_Default = 0;
@@ -246,7 +246,7 @@ public class OpenVR implements Library {
     /**
      * Status of the overall system or tracked objects
      */
-    public static interface EVRState {
+    public static class EVRState {
 
         public static final int VRState_Undefined = -1;
         public static final int VRState_Off = 0;
@@ -260,7 +260,7 @@ public class OpenVR implements Library {
     /**
      * The types of events that could be posted (and what the parameters mean for each event type)
      */
-    public static interface EVREventType {
+    public static class EVREventType {
 
         public static final int VREvent_None = 0;
         public static final int VREvent_TrackedDeviceActivated = 100;
@@ -383,7 +383,7 @@ public class OpenVR implements Library {
     /**
      * Level of Hmd activity.
      */
-    public static interface EDeviceActivityLevel {
+    public static class EDeviceActivityLevel {
 
         public static final int k_EDeviceActivityLevel_Unknown = -1;
         public static final int k_EDeviceActivityLevel_Idle = 0;
@@ -395,7 +395,7 @@ public class OpenVR implements Library {
     /**
      * VR controller button and axis IDs
      */
-    public static interface EVRButtonId {
+    public static class EVRButtonId {
 
         public static final int k_EButton_System = 0;
         public static final int k_EButton_ApplicationMenu = 1;
@@ -423,7 +423,7 @@ public class OpenVR implements Library {
     /**
      * used for simulated mouse events in overlay space
      */
-    public static interface EVRMouseButton {
+    public static class EVRMouseButton {
 
         public static final int VRMouseButton_Left = 0x0001;
         public static final int VRMouseButton_Right = 0x0002;
@@ -434,7 +434,7 @@ public class OpenVR implements Library {
      * Identifies what kind of axis is on the controller at index n. Read this type
      * with pVRSystem->Get( nControllerDeviceIndex, Prop_Axis0Type_Int32 + n );
      */
-    public static interface EVRControllerAxisType {
+    public static class EVRControllerAxisType {
 
         public static final int k_eControllerAxis_None = 0;
         public static final int k_eControllerAxis_TrackPad = 1;
@@ -449,7 +449,7 @@ public class OpenVR implements Library {
     /**
      * determines how to provide output to the application of various event processing functions.
      */
-    public static interface EVRControllerEventOutputType {
+    public static class EVRControllerEventOutputType {
 
         public static final int ControllerEventOutput_OSEvents = 0;
         public static final int ControllerEventOutput_VREvents = 1;
@@ -458,7 +458,7 @@ public class OpenVR implements Library {
     /**
      * Collision Bounds Style
      */
-    public static interface ECollisionBoundsStyle {
+    public static class ECollisionBoundsStyle {
 
         public static final int COLLISION_BOUNDS_STYLE_BEGINNER = 0;
         public static final int COLLISION_BOUNDS_STYLE_INTERMEDIATE = 1;
@@ -474,7 +474,7 @@ public class OpenVR implements Library {
     /**
      * Errors that can occur around VR overlays
      */
-    public static interface EVROverlayError {
+    public static class EVROverlayError {
 
         public static final int VROverlayError_None = 0;
 
@@ -503,7 +503,7 @@ public class OpenVR implements Library {
      * enum values to pass in to VR_Init to identify whether the application will
      * draw a 3D scene.
      */
-    public static interface EVRApplicationType {
+    public static class EVRApplicationType {
 
         // Some other kind of application that isn't covered by the other entries
         public static final int VRApplication_Other = 0;
@@ -517,7 +517,7 @@ public class OpenVR implements Library {
          */
         public static final int VRApplication_Background = 3;
         /**
-         * Init should not try to load any drivers. The application needs access to utility interfaces (like IVRSettings
+         * Init should not try to load any drivers. The application needs access to utility classs (like IVRSettings
          * and IVRApplications) but not hardware.
          */
         public static final int VRApplication_Utility = 4;
@@ -528,7 +528,7 @@ public class OpenVR implements Library {
     /**
      * error codes for firmware
      */
-    public static interface EVRFirmwareError {
+    public static class EVRFirmwareError {
 
         public static final int VRFirmwareError_None = 0;
         public static final int VRFirmwareError_Success = 1;
@@ -538,7 +538,7 @@ public class OpenVR implements Library {
     /**
      * error codes for notifications
      */
-    public static interface EVRNotificationError {
+    public static class EVRNotificationError {
 
         public static final int VRNotificationError_OK = 0;
         public static final int VRNotificationError_InvalidNotificationId = 100;
@@ -547,7 +547,7 @@ public class OpenVR implements Library {
     };
 
     // Please add adequate error description to https://developer.valvesoftware.com/w/index.php?title=Category:SteamVRHelp
-    public static interface EVRInitError {
+    public static class EVRInitError {
 
         public static final int VRInitError_None = 0;
         public static final int VRInitError_Unknown = 1;
@@ -621,9 +621,9 @@ public class OpenVR implements Library {
     };
 
     /**
-     * Used for all errors reported by the IVRApplications interface
+     * Used for all errors reported by the IVRApplications class
      */
-    public static interface EVRApplicationError {
+    public static class EVRApplicationError {
 
         public static final int VRApplicationError_None = 0;
 
@@ -668,7 +668,7 @@ public class OpenVR implements Library {
     /**
      * these are the properties available on applications.
      */
-    public static interface EVRApplicationProperty {
+    public static class EVRApplicationProperty {
 
         public static final int VRApplicationProperty_Name_String = 0;
 
@@ -693,7 +693,7 @@ public class OpenVR implements Library {
     /**
      * These are states the scene application startup process will go through.
      */
-    public static interface EVRApplicationTransitionState {
+    public static class EVRApplicationTransitionState {
 
         public static final int VRApplicationTransition_None = 0;
 
@@ -703,7 +703,7 @@ public class OpenVR implements Library {
         public static final int VRApplicationTransition_NewAppLaunched = 20;
     };
 
-    public static interface EVRSettingsError {
+    public static class EVRSettingsError {
 
         public static final int VRSettingsError_None = 0;
         public static final int VRSettingsError_IPCFailed = 1;
@@ -714,7 +714,7 @@ public class OpenVR implements Library {
     // The maximum length of a settings key
     public static final int k_unMaxSettingsKeyLength = 128;
 
-    public static interface ChaperoneCalibrationState {
+    public static class ChaperoneCalibrationState {
 
         // OK!
         public static final int ChaperoneCalibrationState_OK = 1;   // Chaperone is fully calibrated and working correctly
@@ -740,7 +740,7 @@ public class OpenVR implements Library {
         public static final int ChaperoneCalibrationState_Error_CollisionBoundsInvalid = 204;
     };
 
-    public static interface EChaperoneConfigFile {
+    public static class EChaperoneConfigFile {
 
         // The live chaperone config, used by most applications and games
         public static final int EChaperoneConfigFile_Live = 1;
@@ -748,7 +748,7 @@ public class OpenVR implements Library {
         public static final int EChaperoneConfigFile_Temp = 2;
     };
 
-    public static interface EChaperoneImportFlags {
+    public static class EChaperoneImportFlags {
 
         public static final int EChaperoneImport_BoundsOnly = 0x0001;
     };
@@ -756,7 +756,7 @@ public class OpenVR implements Library {
     /**
      * Errors that can occur with the VR compositor
      */
-    public static interface EVRCompositorError {
+    public static class EVRCompositorError {
 
         public static final int VRCompositorError_None = 0;
         public static final int VRCompositorError_IncompatibleVersion = 100;
@@ -772,7 +772,7 @@ public class OpenVR implements Library {
     public static final int VRCompositor_ReprojectionReason_Cpu = 0x01;
     public static final int VRCompositor_ReprojectionReason_Gpu = 0x02;
 
-    public static interface EVRNotificationType {
+    public static class EVRNotificationType {
 
         /**
          * Transient notifications are automatically hidden after a period of time set by the user.
@@ -786,7 +786,7 @@ public class OpenVR implements Library {
         public static final int EVRNotificationType_Persistent = 1;
     };
 
-    public static interface EVRNotificationStyle {
+    public static class EVRNotificationStyle {
 
         /**
          * Creates a notification with minimal external styling.
@@ -827,7 +827,7 @@ public class OpenVR implements Library {
     /**
      * Types of input supported by VR Overlays
      */
-    public static interface VROverlayInputMethod {
+    public static class VROverlayInputMethod {
 
         // No input events will be generated automatically for this overlay
         public static final int VROverlayInputMethod_None = 0;
@@ -838,7 +838,7 @@ public class OpenVR implements Library {
     /**
      * Allows the caller to figure out which overlay transform getter to call.
      */
-    public static interface VROverlayTransformType {
+    public static class VROverlayTransformType {
 
         public static final int VROverlayTransform_Absolute = 0;
         public static final int VROverlayTransform_TrackedDeviceRelative = 1;
@@ -849,7 +849,7 @@ public class OpenVR implements Library {
     /**
      * Overlay control settings
      */
-    public static interface VROverlayFlags {
+    public static class VROverlayFlags {
 
         public static final int VROverlayFlags_None = 0;
 
@@ -882,7 +882,7 @@ public class OpenVR implements Library {
     };
 
     // Input modes for the Big Picture gamepad text entry
-    public static interface EGamepadTextInputMode {
+    public static class EGamepadTextInputMode {
 
         public static final int k_EGamepadTextInputModeNormal = 0;
         public static final int k_EGamepadTextInputModePassword = 1;
@@ -890,7 +890,7 @@ public class OpenVR implements Library {
     };
 
     // Controls number of allowed lines for the Big Picture gamepad text entry
-    public static interface EGamepadTextInputLineMode {
+    public static class EGamepadTextInputLineMode {
 
         public static final int k_EGamepadTextInputLineModeSingleLine = 0;
         public static final int k_EGamepadTextInputLineModeMultipleLines = 1;
@@ -899,7 +899,7 @@ public class OpenVR implements Library {
     /**
      * Directions for changing focus between overlays with the gamepad
      */
-    public static interface EOverlayDirection {
+    public static class EOverlayDirection {
 
         public static final int OverlayDirection_Up = 0;
         public static final int OverlayDirection_Down = 1;
@@ -912,7 +912,7 @@ public class OpenVR implements Library {
     /**
      * Errors that can occur with the VR compositor
      */
-    public static interface EVRRenderModelError {
+    public static class EVRRenderModelError {
 
         public static final int VRRenderModelError_None = 0;
         public static final int VRRenderModelError_Loading = 100;
@@ -926,7 +926,7 @@ public class OpenVR implements Library {
         public static final int VRRenderModelError_InvalidTexture = 400;
     };
 
-    public static interface EVRComponentProperty {
+    public static class EVRComponentProperty {
 
         public static final int VRComponentProperty_IsStatic = (1 << 0);
         public static final int VRComponentProperty_IsVisible = (1 << 1);
@@ -964,7 +964,7 @@ public class OpenVR implements Library {
     /**
      * Original signature : <code>intptr_t VR_GetGenericInterface(const char*, EVRInitError*)</code>
      *
-     * Returns the interface of the specified version. This method must be called after VR_Init. The pointer returned is
+     * Returns the class of the specified version. This method must be called after VR_Init. The pointer returned is
      * valid until VR_Shutdown is called.
      *
      * @param pchInterfaceVersion
