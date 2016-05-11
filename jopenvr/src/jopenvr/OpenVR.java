@@ -703,6 +703,17 @@ public class OpenVR implements Library {
         public static final int VRApplicationTransition_NewAppLaunched = 20;
     };
 
+    public static interface EVRSettingsError {
+
+        public static final int VRSettingsError_None = 0;
+        public static final int VRSettingsError_IPCFailed = 1;
+        public static final int VRSettingsError_WriteFailed = 2;
+        public static final int VRSettingsError_ReadFailed = 3;
+    };
+
+    // The maximum length of a settings key
+    public static final int k_unMaxSettingsKeyLength = 128;
+
     public static interface ChaperoneCalibrationState {
 
         // OK!
@@ -818,134 +829,119 @@ public class OpenVR implements Library {
      */
     public static interface VROverlayInputMethod {
 
+        // No input events will be generated automatically for this overlay
         public static final int VROverlayInputMethod_None = 0;
+        // Tracked controllers will get mouse events automatically
         public static final int VROverlayInputMethod_Mouse = 1;
     };
 
     /**
-     * enum values
+     * Allows the caller to figure out which overlay transform getter to call.
      */
     public static interface VROverlayTransformType {
 
-        public static final int VROverlayTransformType_VROverlayTransform_Absolute = 0;
-        public static final int VROverlayTransformType_VROverlayTransform_TrackedDeviceRelative = 1;
-        public static final int VROverlayTransformType_VROverlayTransform_SystemOverlay = 2;
-        public static final int VROverlayTransformType_VROverlayTransform_TrackedComponent = 3;
+        public static final int VROverlayTransform_Absolute = 0;
+        public static final int VROverlayTransform_TrackedDeviceRelative = 1;
+        public static final int VROverlayTransform_SystemOverlay = 2;
+        public static final int VROverlayTransform_TrackedComponent = 3;
     };
 
     /**
-     * enum values
+     * Overlay control settings
      */
     public static interface VROverlayFlags {
 
         public static final int VROverlayFlags_None = 0;
+
+        // The following only take effect when rendered using the high quality render path (see SetHighQualityOverlay).
         public static final int VROverlayFlags_Curved = 1;
         public static final int VROverlayFlags_RGSS4X = 2;
+
+        // Set this flag on a dashboard overlay to prevent a tab from showing up for that overlay
         public static final int VROverlayFlags_NoDashboardTab = 3;
+
+        // Set this flag on a dashboard that is able to deal with gamepad focus events
         public static final int VROverlayFlags_AcceptsGamepadEvents = 4;
+
+        // Indicates that the overlay should dim/brighten to show gamepad focus
         public static final int VROverlayFlags_ShowGamepadFocus = 5;
+
+        // When in VROverlayInputMethod_Mouse you can optionally enable sending VRScroll_t 
         public static final int VROverlayFlags_SendVRScrollEvents = 6;
         public static final int VROverlayFlags_SendVRTouchpadEvents = 7;
+        /**
+         * If set this will render a vertical scroll wheel on the primary controller, only needed if not using
+         * VROverlayFlags_SendVRScrollEvents but you still want to represent a scroll wheel.
+         */
         public static final int VROverlayFlags_ShowTouchPadScrollWheel = 8;
+        /**
+         * If this is set ownership and render access to the overlay are transferred to the new scene process on a call
+         * to IVRApplications::LaunchInternalProcess.
+         */
+        public static final int VROverlayFlags_TransferOwnershipToInternalProcess = 9;
     };
 
-    /**
-     * enum values
-     */
+    // Input modes for the Big Picture gamepad text entry
     public static interface EGamepadTextInputMode {
 
-        public static final int EGamepadTextInputMode_k_EGamepadTextInputModeNormal = 0;
-        public static final int EGamepadTextInputMode_k_EGamepadTextInputModePassword = 1;
-        public static final int EGamepadTextInputMode_k_EGamepadTextInputModeSubmit = 2;
+        public static final int k_EGamepadTextInputModeNormal = 0;
+        public static final int k_EGamepadTextInputModePassword = 1;
+        public static final int k_EGamepadTextInputModeSubmit = 2;
     };
 
-    /**
-     * enum values
-     */
+    // Controls number of allowed lines for the Big Picture gamepad text entry
     public static interface EGamepadTextInputLineMode {
 
-        public static final int EGamepadTextInputLineMode_k_EGamepadTextInputLineModeSingleLine = 0;
-        public static final int EGamepadTextInputLineMode_k_EGamepadTextInputLineModeMultipleLines = 1;
+        public static final int k_EGamepadTextInputLineModeSingleLine = 0;
+        public static final int k_EGamepadTextInputLineModeMultipleLines = 1;
     };
 
     /**
-     * enum values
+     * Directions for changing focus between overlays with the gamepad
      */
     public static interface EOverlayDirection {
 
-        public static final int EOverlayDirection_OverlayDirection_Up = 0;
-        public static final int EOverlayDirection_OverlayDirection_Down = 1;
-        public static final int EOverlayDirection_OverlayDirection_Left = 2;
-        public static final int EOverlayDirection_OverlayDirection_Right = 3;
-        public static final int EOverlayDirection_OverlayDirection_Count = 4;
+        public static final int OverlayDirection_Up = 0;
+        public static final int OverlayDirection_Down = 1;
+        public static final int OverlayDirection_Left = 2;
+        public static final int OverlayDirection_Right = 3;
+
+        public static final int OverlayDirection_Count = 4;
     };
 
     /**
-     * enum values
+     * Errors that can occur with the VR compositor
      */
     public static interface EVRRenderModelError {
 
-        public static final int EVRRenderModelError_VRRenderModelError_None = 0;
-        public static final int EVRRenderModelError_VRRenderModelError_Loading = 100;
-        public static final int EVRRenderModelError_VRRenderModelError_NotSupported = 200;
-        public static final int EVRRenderModelError_VRRenderModelError_InvalidArg = 300;
-        public static final int EVRRenderModelError_VRRenderModelError_InvalidModel = 301;
-        public static final int EVRRenderModelError_VRRenderModelError_NoShapes = 302;
-        public static final int EVRRenderModelError_VRRenderModelError_MultipleShapes = 303;
-        public static final int EVRRenderModelError_VRRenderModelError_TooManyIndices = 304;
-        public static final int EVRRenderModelError_VRRenderModelError_MultipleTextures = 305;
-        public static final int EVRRenderModelError_VRRenderModelError_InvalidTexture = 400;
+        public static final int VRRenderModelError_None = 0;
+        public static final int VRRenderModelError_Loading = 100;
+        public static final int VRRenderModelError_NotSupported = 200;
+        public static final int VRRenderModelError_InvalidArg = 300;
+        public static final int VRRenderModelError_InvalidModel = 301;
+        public static final int VRRenderModelError_NoShapes = 302;
+        public static final int VRRenderModelError_MultipleShapes = 303;
+        public static final int VRRenderModelError_TooManyIndices = 304;
+        public static final int VRRenderModelError_MultipleTextures = 305;
+        public static final int VRRenderModelError_InvalidTexture = 400;
     };
 
-    /**
-     * enum values
-     */
     public static interface EVRComponentProperty {
 
-        public static final int EVRComponentProperty_VRComponentProperty_IsStatic = 1;
-        public static final int EVRComponentProperty_VRComponentProperty_IsVisible = 2;
-        public static final int EVRComponentProperty_VRComponentProperty_IsTouched = 4;
-        public static final int EVRComponentProperty_VRComponentProperty_IsPressed = 8;
-        public static final int EVRComponentProperty_VRComponentProperty_IsScrolled = 16;
+        public static final int VRComponentProperty_IsStatic = (1 << 0);
+        public static final int VRComponentProperty_IsVisible = (1 << 1);
+        public static final int VRComponentProperty_IsTouched = (1 << 2);
+        public static final int VRComponentProperty_IsPressed = (1 << 3);
+        public static final int VRComponentProperty_IsScrolled = (1 << 4);
     };
-
-    /**
-     * enum values
-     */
-    public static interface EVRSettingsError {
-
-        public static final int EVRSettingsError_VRSettingsError_None = 0;
-        public static final int EVRSettingsError_VRSettingsError_IPCFailed = 1;
-        public static final int EVRSettingsError_VRSettingsError_WriteFailed = 2;
-        public static final int EVRSettingsError_VRSettingsError_ReadFailed = 3;
-    };
-
-    /**
-     * enum values
-     */
-    public static interface ECameraVideoStreamFormat {
-
-        public static final int ECameraVideoStreamFormat_CVS_FORMAT_UNKNOWN = 0;
-        public static final int ECameraVideoStreamFormat_CVS_FORMAT_RAW10 = 1;
-        public static final int ECameraVideoStreamFormat_CVS_FORMAT_NV12 = 2;
-        public static final int ECameraVideoStreamFormat_CVS_FORMAT_RGB24 = 3;
-        public static final int ECameraVideoStreamFormat_CVS_MAX_FORMATS = 4;
-    };
-
-    public static final int k_unMaxSettingsKeyLength = 128;
-
-    /**
-     * Global entry points<br>
-     * Original signature : <code>intptr_t VR_InitInternal(EVRInitError*, EVRApplicationType)</code><br>
-     *
-     * @deprecated use the safer methods {@link #VR_InitInternal(java.nio.IntBuffer, int)} and {@link #VR_InitInternal(com.sun.jna.ptr.IntByReference, int)} instead
-     */
-    @Deprecated
-    public static native Pointer VR_InitInternal(IntByReference peError, int eType);
 
     /**
      * Global entry points<br>
      * Original signature : <code>intptr_t VR_InitInternal(EVRInitError*, EVRApplicationType)</code>
+     *
+     * @param peError
+     * @param eType
+     * @return
      */
     public static native Pointer VR_InitInternal(IntBuffer peError, int eType);
 
@@ -956,47 +952,69 @@ public class OpenVR implements Library {
 
     /**
      * Original signature : <code>bool VR_IsHmdPresent()</code>
+     *
+     * Returns true if there is an HMD attached. This check is as lightweight as possible and can be called outside of
+     * VR_Init/VR_Shutdown. It should be used when an application wants to know if initializing VR is a possibility but
+     * isn't ready to take that step yet.
+     *
+     * @return
      */
     public static native byte VR_IsHmdPresent();
 
     /**
-     * Original signature : <code>intptr_t VR_GetGenericInterface(const char*, EVRInitError*)</code><br>
-     *
-     * @deprecated use the safer methods {@link #VR_GetGenericInterface(java.lang.String, java.nio.IntBuffer)} and {@link #VR_GetGenericInterface(com.sun.jna.Pointer, com.sun.jna.ptr.IntByReference)} instead
-     */
-    @Deprecated
-    public static native Pointer VR_GetGenericInterface(Pointer pchInterfaceVersion, IntByReference peError);
-
-    /**
      * Original signature : <code>intptr_t VR_GetGenericInterface(const char*, EVRInitError*)</code>
+     *
+     * Returns the interface of the specified version. This method must be called after VR_Init. The pointer returned is
+     * valid until VR_Shutdown is called.
+     *
+     * @param pchInterfaceVersion
+     * @param peError
+     * @return
      */
     public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, IntBuffer peError);
 
     /**
      * Original signature : <code>bool VR_IsRuntimeInstalled()</code>
+     *
+     * Returns true if the OpenVR runtime is installed.
+     *
+     * @return
      */
     public static native byte VR_IsRuntimeInstalled();
 
     /**
      * Original signature : <code>char* VR_GetVRInitErrorAsSymbol(EVRInitError)</code>
+     *
+     * Returns the name of the enum value for an EVRInitError. This function may be called outside of
+     * VR_Init()/VR_Shutdown().
+     *
+     * @param error
+     * @return
      */
     public static native Pointer VR_GetVRInitErrorAsSymbol(int error);
 
     /**
      * Original signature : <code>char* VR_GetVRInitErrorAsEnglishDescription(EVRInitError)</code>
+     *
+     * Returns an english string for an EVRInitError. Applications should call VR_GetVRInitErrorAsSymbol instead and use 
+     * that as a key to look up their own localized error message. This function may be called outside of 
+     * VR_Init()/VR_Shutdown().
+     *
+     * @param error
+     * @return
      */
     public static native Pointer VR_GetVRInitErrorAsEnglishDescription(int error);
 
-    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
-    public static String IVRApplications_Version = "FnTable:IVRApplications_005";
-    public static String IVRSettings_Version = "FnTable:IVRSettings_001";
-    public static String IVRExtendedDisplay_Version = "FnTable:IVRExtendedDisplay_001";
-    public static String IVRChaperone_Version = "FnTable:IVRChaperone_003";
-    public static String IVRChaperoneSetup_Version = "FnTable:IVRChaperoneSetup_005";
-    public static String IVRCompositor_Version = "FnTable:IVRCompositor_014";
-    public static String IVROverlay_Version = "FnTable:IVROverlay_011";
-    public static String IVRRenderModels_Version = "FnTable:IVRRenderModels_005";
-    public static String IVRControlPanel_Version = "FnTable:IVRControlPanel_001";
-    public static String IVRNotifications_Version = "FnTable:IVRNotifications_002";
-    public static String IVRTrackedCamera_Version = "FnTable:IVRTrackedCamera_001";
+    public static String IVRSystem_Version = "IVRSystem_012";
+    public static String IVRApplications_Version = "IVRApplications_005";
+    public static String IVRSettings_Version = "IVRSettings_001";
+    public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
+    public static String IVRChaperone_Version = "IVRChaperone_003";
+    public static String IVRChaperoneSetup_Version = "IVRChaperoneSetup_005";
+    public static String IVRCompositor_Version = "IVRCompositor_014";
+    public static String IVROverlay_Version = "IVROverlay_011";
+    public static String IVRRenderModels_Version = "IVRRenderModels_005";
+    public static String IVRControlPanel_Version = "IVRControlPanel_001";
+    public static String IVRNotifications_Version = "IVRNotifications_002";
+    public static String IVRTrackedCamera_Version = "IVRTrackedCamera_001";
 }

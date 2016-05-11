@@ -30,6 +30,7 @@ public class VROverlayIntersectionParams_t extends Structure {
         super();
     }
 
+    @Override
     protected List<?> getFieldOrder() {
         return Arrays.asList("vSource", "vDirection", "eOrigin");
     }
@@ -52,10 +53,8 @@ public class VROverlayIntersectionParams_t extends Structure {
     }
 
     public static class ByReference extends VROverlayIntersectionParams_t implements Structure.ByReference {
-
     };
 
     public static class ByValue extends VROverlayIntersectionParams_t implements Structure.ByValue {
-
     };
 }

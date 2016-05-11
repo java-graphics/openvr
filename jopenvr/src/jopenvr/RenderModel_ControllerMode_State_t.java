@@ -12,12 +12,14 @@ import java.util.List;
  */
 public class RenderModel_ControllerMode_State_t extends Structure {
 
+    // is this controller currently set to be in a scroll wheel mode
     public byte bScrollWheelVisible;
 
     public RenderModel_ControllerMode_State_t() {
         super();
     }
 
+    @Override
     protected List<?> getFieldOrder() {
         return Arrays.asList("bScrollWheelVisible");
     }
@@ -32,10 +34,8 @@ public class RenderModel_ControllerMode_State_t extends Structure {
     }
 
     public static class ByReference extends RenderModel_ControllerMode_State_t implements Structure.ByReference {
-
     };
 
     public static class ByValue extends RenderModel_ControllerMode_State_t implements Structure.ByValue {
-
     };
 }

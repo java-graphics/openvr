@@ -30,6 +30,7 @@ public class VROverlayIntersectionResults_t extends Structure {
         super();
     }
 
+    @Override
     protected List<?> getFieldOrder() {
         return Arrays.asList("vPoint", "vNormal", "vUVs", "fDistance");
     }
@@ -52,10 +53,8 @@ public class VROverlayIntersectionResults_t extends Structure {
     }
 
     public static class ByReference extends VROverlayIntersectionResults_t implements Structure.ByReference {
-
     };
 
     public static class ByValue extends VROverlayIntersectionResults_t implements Structure.ByValue {
-
     };
 }

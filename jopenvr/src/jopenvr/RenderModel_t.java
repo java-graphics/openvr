@@ -16,17 +16,25 @@ public class RenderModel_t extends Structure {
     /**
      * const struct vr::RenderModel_Vertex_t *<br>
      * C type : RenderModel_Vertex_t*
+     *
+     * Vertex data for the mesh.
      */
     public jopenvr.RenderModel_Vertex_t.ByReference rVertexData;
+    // Number of vertices in the vertex data
     public int unVertexCount;
     /**
      * const uint16_t *<br>
      * C type : uint16_t*
+     *
+     * Indices into the vertex data for each triangle.
      */
     public ShortByReference rIndexData;
+    // Number of triangles in the mesh. Index count is 3 * TriangleCount
     public int unTriangleCount;
     /**
      * C type : TextureID_t
+     *
+     * Session unique texture identifier. Rendermodels which share the same texture will have the same id. <0 == texture not present.
      */
     public int diffuseTextureId;
 
@@ -34,6 +42,7 @@ public class RenderModel_t extends Structure {
         super();
     }
 
+    @Override
     protected List<?> getFieldOrder() {
         return Arrays.asList("rVertexData", "unVertexCount", "rIndexData", "unTriangleCount", "diffuseTextureId");
     }
@@ -41,8 +50,10 @@ public class RenderModel_t extends Structure {
     /**
      * @param rVertexData const struct vr::RenderModel_Vertex_t *<br>
      * C type : RenderModel_Vertex_t*<br>
+     * @param unVertexCount
      * @param rIndexData const uint16_t *<br>
      * C type : uint16_t*<br>
+     * @param unTriangleCount
      * @param diffuseTextureId C type : TextureID_t
      */
     public RenderModel_t(jopenvr.RenderModel_Vertex_t.ByReference rVertexData, int unVertexCount, ShortByReference rIndexData, int unTriangleCount, int diffuseTextureId) {
@@ -59,10 +70,8 @@ public class RenderModel_t extends Structure {
     }
 
     public static class ByReference extends RenderModel_t implements Structure.ByReference {
-
     };
 
     public static class ByValue extends RenderModel_t implements Structure.ByValue {
-
     };
 }
