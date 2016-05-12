@@ -1102,4 +1102,21 @@ public class VR implements Library {
     public static String k_pch_Controller_Component_HandGrip = "handgrip";// Neutral, ambidextrous hand-pose when holding controller. On plane between neutrally posed index finger and thumb
     public static String k_pch_Controller_Component_Status = "status";// For controllers with an unambiguous 'base'.
 
+    public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
+
+        IVRSystem vrSystem = null;
+
+        VR_InitInternal(error, applicationType);
+
+        COpenVRContext ctx = new COpenVRContext();
+        ctx.clear();
+
+        if (error.get(0) == EVRInitError.VRInitError_None) {
+            
+//            if(vr_is)
+            vrSystem = new IVRSystem();
+        }
+        
+        return vrSystem;
+    }
 }
