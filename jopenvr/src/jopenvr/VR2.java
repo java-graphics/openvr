@@ -1170,7 +1170,7 @@ public class VR2 implements Library {
         if (error.get(0) == EVRInitError.VRInitError_None) {
             
 //            if(vr_is)
-            vrSystem = new IVRSystem();
+//            vrSystem = new IVRSystem();
         }
         
         return vrSystem;
