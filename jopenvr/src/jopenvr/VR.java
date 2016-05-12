@@ -1047,7 +1047,7 @@ public class VR implements Library {
      */
     public static native Pointer VR_GetVRInitErrorAsEnglishDescription(int error);
 
-    public static String IVRSystem_Version = "IVRSystem_012";
+    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
     public static String IVRApplications_Version = "IVRApplications_005";
     public static String IVRSettings_Version = "IVRSettings_001";
     public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
@@ -1070,14 +1070,13 @@ public class VR implements Library {
         IVRSystem vrSystem = null;
 
         VR_InitInternal(error, applicationType);
-
         COpenVRContext ctx = new COpenVRContext();
         ctx.clear();
 
         if (error.get(0) == EVRInitError.VRInitError_None) {
             
 //            if(vr_is)
-            vrSystem = new IVRSystem();
+            vrSystem = new IVRSystem(VR_GetGenericInterface(VR.IVRSystem_Version, error));
         }
         
         return vrSystem;
