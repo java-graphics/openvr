@@ -32,30 +32,30 @@ public class VR implements Library {
      */
     public static int k_unControllerStateAxisCount = 5;
     public static long k_ulOverlayHandleInvalid = 0L;
-    public static String IVRSystem_Version = "IVRSystem_012";
-    public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
+    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
+    public static String IVRExtendedDisplay_Version = "FnTable:IVRExtendedDisplay_001";
     /**
      * The maximum length of an application key.
      */
     public static int k_unMaxApplicationKeyLength = 128;
-    public static String IVRApplications_Version = "IVRApplications_005";
-    public static String IVRChaperone_Version = "IVRChaperone_003";
-    public static String IVRChaperoneSetup_Version = "IVRChaperoneSetup_005";
-    public static String IVRCompositor_Version = "IVRCompositor_014";
+    public static String IVRApplications_Version = "FnTable:IVRApplications_005";
+    public static String IVRChaperone_Version = "FnTable:IVRChaperone_003";
+    public static String IVRChaperoneSetup_Version = "FnTable:IVRChaperoneSetup_005";
+    public static String IVRCompositor_Version = "FnTable:IVRCompositor_014";
     public static int k_unVROverlayMaxKeyLength = 128;
     public static int k_unVROverlayMaxNameLength = 128;
     public static int k_unMaxOverlayCount = 32;
-    public static String IVROverlay_Version = "IVROverlay_011";
+    public static String IVROverlay_Version = "FnTable:IVROverlay_011";
     public static String k_pch_Controller_Component_GDC2015 = "gdc2015";
     public static String k_pch_Controller_Component_Base = "base";
     public static String k_pch_Controller_Component_Tip = "tip";
     public static String k_pch_Controller_Component_HandGrip = "handgrip";
     public static String k_pch_Controller_Component_Status = "status";
-    public static String IVRRenderModels_Version = "IVRRenderModels_005";
+    public static String IVRRenderModels_Version = "FnTable:IVRRenderModels_005";
     public static int k_unNotificationTextMaxSize = 256;
-    public static String IVRNotifications_Version = "IVRNotifications_002";
+    public static String IVRNotifications_Version = "FnTable:IVRNotifications_002";
     public static int k_unMaxSettingsKeyLength = 128;
-    public static String IVRSettings_Version = "IVRSettings_001";
+    public static String IVRSettings_Version = "FnTable:IVRSettings_001";
     public static String k_pch_SteamVR_Section = "steamvr";
     public static String k_pch_SteamVR_RequireHmd_String = "requireHmd";
     public static String k_pch_SteamVR_ForcedDriverKey_String = "forcedDriver";
