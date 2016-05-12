@@ -12,96 +12,96 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRApplications_FnTable extends Structure {
+public class IVRApplications_FnTable extends Structure {
 
     /**
      * C type : AddApplicationManifest_callback*
      */
-    public VR_IVRApplications_FnTable.AddApplicationManifest_callback AddApplicationManifest;
+    public IVRApplications_FnTable.AddApplicationManifest_callback AddApplicationManifest;
     /**
      * C type : RemoveApplicationManifest_callback*
      */
-    public VR_IVRApplications_FnTable.RemoveApplicationManifest_callback RemoveApplicationManifest;
+    public IVRApplications_FnTable.RemoveApplicationManifest_callback RemoveApplicationManifest;
     /**
      * C type : IsApplicationInstalled_callback*
      */
-    public VR_IVRApplications_FnTable.IsApplicationInstalled_callback IsApplicationInstalled;
+    public IVRApplications_FnTable.IsApplicationInstalled_callback IsApplicationInstalled;
     /**
      * C type : GetApplicationCount_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationCount_callback GetApplicationCount;
+    public IVRApplications_FnTable.GetApplicationCount_callback GetApplicationCount;
     /**
      * C type : GetApplicationKeyByIndex_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationKeyByIndex_callback GetApplicationKeyByIndex;
+    public IVRApplications_FnTable.GetApplicationKeyByIndex_callback GetApplicationKeyByIndex;
     /**
      * C type : GetApplicationKeyByProcessId_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationKeyByProcessId_callback GetApplicationKeyByProcessId;
+    public IVRApplications_FnTable.GetApplicationKeyByProcessId_callback GetApplicationKeyByProcessId;
     /**
      * C type : LaunchApplication_callback*
      */
-    public VR_IVRApplications_FnTable.LaunchApplication_callback LaunchApplication;
+    public IVRApplications_FnTable.LaunchApplication_callback LaunchApplication;
     /**
      * C type : LaunchDashboardOverlay_callback*
      */
-    public VR_IVRApplications_FnTable.LaunchDashboardOverlay_callback LaunchDashboardOverlay;
+    public IVRApplications_FnTable.LaunchDashboardOverlay_callback LaunchDashboardOverlay;
     /**
      * C type : CancelApplicationLaunch_callback*
      */
-    public VR_IVRApplications_FnTable.CancelApplicationLaunch_callback CancelApplicationLaunch;
+    public IVRApplications_FnTable.CancelApplicationLaunch_callback CancelApplicationLaunch;
     /**
      * C type : IdentifyApplication_callback*
      */
-    public VR_IVRApplications_FnTable.IdentifyApplication_callback IdentifyApplication;
+    public IVRApplications_FnTable.IdentifyApplication_callback IdentifyApplication;
     /**
      * C type : GetApplicationProcessId_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationProcessId_callback GetApplicationProcessId;
+    public IVRApplications_FnTable.GetApplicationProcessId_callback GetApplicationProcessId;
     /**
      * C type : GetApplicationsErrorNameFromEnum_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationsErrorNameFromEnum_callback GetApplicationsErrorNameFromEnum;
+    public IVRApplications_FnTable.GetApplicationsErrorNameFromEnum_callback GetApplicationsErrorNameFromEnum;
     /**
      * C type : GetApplicationPropertyString_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationPropertyString_callback GetApplicationPropertyString;
+    public IVRApplications_FnTable.GetApplicationPropertyString_callback GetApplicationPropertyString;
     /**
      * C type : GetApplicationPropertyBool_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationPropertyBool_callback GetApplicationPropertyBool;
+    public IVRApplications_FnTable.GetApplicationPropertyBool_callback GetApplicationPropertyBool;
     /**
      * C type : GetApplicationPropertyUint64_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationPropertyUint64_callback GetApplicationPropertyUint64;
+    public IVRApplications_FnTable.GetApplicationPropertyUint64_callback GetApplicationPropertyUint64;
     /**
      * C type : SetApplicationAutoLaunch_callback*
      */
-    public VR_IVRApplications_FnTable.SetApplicationAutoLaunch_callback SetApplicationAutoLaunch;
+    public IVRApplications_FnTable.SetApplicationAutoLaunch_callback SetApplicationAutoLaunch;
     /**
      * C type : GetApplicationAutoLaunch_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationAutoLaunch_callback GetApplicationAutoLaunch;
+    public IVRApplications_FnTable.GetApplicationAutoLaunch_callback GetApplicationAutoLaunch;
     /**
      * C type : GetStartingApplication_callback*
      */
-    public VR_IVRApplications_FnTable.GetStartingApplication_callback GetStartingApplication;
+    public IVRApplications_FnTable.GetStartingApplication_callback GetStartingApplication;
     /**
      * C type : GetTransitionState_callback*
      */
-    public VR_IVRApplications_FnTable.GetTransitionState_callback GetTransitionState;
+    public IVRApplications_FnTable.GetTransitionState_callback GetTransitionState;
     /**
      * C type : PerformApplicationPrelaunchCheck_callback*
      */
-    public VR_IVRApplications_FnTable.PerformApplicationPrelaunchCheck_callback PerformApplicationPrelaunchCheck;
+    public IVRApplications_FnTable.PerformApplicationPrelaunchCheck_callback PerformApplicationPrelaunchCheck;
     /**
      * C type : GetApplicationsTransitionStateNameFromEnum_callback*
      */
-    public VR_IVRApplications_FnTable.GetApplicationsTransitionStateNameFromEnum_callback GetApplicationsTransitionStateNameFromEnum;
+    public IVRApplications_FnTable.GetApplicationsTransitionStateNameFromEnum_callback GetApplicationsTransitionStateNameFromEnum;
     /**
      * C type : IsQuitUserPromptRequested_callback*
      */
-    public VR_IVRApplications_FnTable.IsQuitUserPromptRequested_callback IsQuitUserPromptRequested;
+    public IVRApplications_FnTable.IsQuitUserPromptRequested_callback IsQuitUserPromptRequested;
 
     public interface AddApplicationManifest_callback extends Callback {
 
@@ -213,7 +213,7 @@ public class VR_IVRApplications_FnTable extends Structure {
         byte apply();
     };
 
-    public VR_IVRApplications_FnTable() {
+    public IVRApplications_FnTable() {
         super();
     }
 
@@ -221,15 +221,15 @@ public class VR_IVRApplications_FnTable extends Structure {
         return Arrays.asList("AddApplicationManifest", "RemoveApplicationManifest", "IsApplicationInstalled", "GetApplicationCount", "GetApplicationKeyByIndex", "GetApplicationKeyByProcessId", "LaunchApplication", "LaunchDashboardOverlay", "CancelApplicationLaunch", "IdentifyApplication", "GetApplicationProcessId", "GetApplicationsErrorNameFromEnum", "GetApplicationPropertyString", "GetApplicationPropertyBool", "GetApplicationPropertyUint64", "SetApplicationAutoLaunch", "GetApplicationAutoLaunch", "GetStartingApplication", "GetTransitionState", "PerformApplicationPrelaunchCheck", "GetApplicationsTransitionStateNameFromEnum", "IsQuitUserPromptRequested");
     }
 
-    public VR_IVRApplications_FnTable(Pointer peer) {
+    public IVRApplications_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRApplications_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRApplications_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRApplications_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRApplications_FnTable implements Structure.ByValue {
 
     };
 }

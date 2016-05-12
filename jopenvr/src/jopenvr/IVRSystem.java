@@ -50,7 +50,7 @@ public class IVRSystem extends Structure {
     /**
      * C type : GetDXGIOutputInfo_callback*
      */
-    public jopenvr.VR_IVRExtendedDisplay_FnTable.GetDXGIOutputInfo_callback GetDXGIOutputInfo;
+    public jopenvr.IVRExtendedDisplay_FnTable.GetDXGIOutputInfo_callback GetDXGIOutputInfo;
     /**
      * C type : IsDisplayOnDesktop_callback*
      */

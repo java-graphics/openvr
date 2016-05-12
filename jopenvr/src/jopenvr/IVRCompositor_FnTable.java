@@ -11,116 +11,116 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRCompositor_FnTable extends Structure {
+public class IVRCompositor_FnTable extends Structure {
 
     /**
      * C type : SetTrackingSpace_callback*
      */
-    public VR_IVRCompositor_FnTable.SetTrackingSpace_callback SetTrackingSpace;
+    public IVRCompositor_FnTable.SetTrackingSpace_callback SetTrackingSpace;
     /**
      * C type : GetTrackingSpace_callback*
      */
-    public VR_IVRCompositor_FnTable.GetTrackingSpace_callback GetTrackingSpace;
+    public IVRCompositor_FnTable.GetTrackingSpace_callback GetTrackingSpace;
     /**
      * C type : WaitGetPoses_callback*
      */
-    public VR_IVRCompositor_FnTable.WaitGetPoses_callback WaitGetPoses;
+    public IVRCompositor_FnTable.WaitGetPoses_callback WaitGetPoses;
     /**
      * C type : GetLastPoses_callback*
      */
-    public VR_IVRCompositor_FnTable.GetLastPoses_callback GetLastPoses;
+    public IVRCompositor_FnTable.GetLastPoses_callback GetLastPoses;
     /**
      * C type : GetLastPoseForTrackedDeviceIndex_callback*
      */
-    public VR_IVRCompositor_FnTable.GetLastPoseForTrackedDeviceIndex_callback GetLastPoseForTrackedDeviceIndex;
+    public IVRCompositor_FnTable.GetLastPoseForTrackedDeviceIndex_callback GetLastPoseForTrackedDeviceIndex;
     /**
      * C type : Submit_callback*
      */
-    public VR_IVRCompositor_FnTable.Submit_callback Submit;
+    public IVRCompositor_FnTable.Submit_callback Submit;
     /**
      * C type : ClearLastSubmittedFrame_callback*
      */
-    public VR_IVRCompositor_FnTable.ClearLastSubmittedFrame_callback ClearLastSubmittedFrame;
+    public IVRCompositor_FnTable.ClearLastSubmittedFrame_callback ClearLastSubmittedFrame;
     /**
      * C type : PostPresentHandoff_callback*
      */
-    public VR_IVRCompositor_FnTable.PostPresentHandoff_callback PostPresentHandoff;
+    public IVRCompositor_FnTable.PostPresentHandoff_callback PostPresentHandoff;
     /**
      * C type : GetFrameTiming_callback*
      */
-    public VR_IVRCompositor_FnTable.GetFrameTiming_callback GetFrameTiming;
+    public IVRCompositor_FnTable.GetFrameTiming_callback GetFrameTiming;
     /**
      * C type : GetFrameTimeRemaining_callback*
      */
-    public VR_IVRCompositor_FnTable.GetFrameTimeRemaining_callback GetFrameTimeRemaining;
+    public IVRCompositor_FnTable.GetFrameTimeRemaining_callback GetFrameTimeRemaining;
     /**
      * C type : FadeToColor_callback*
      */
-    public VR_IVRCompositor_FnTable.FadeToColor_callback FadeToColor;
+    public IVRCompositor_FnTable.FadeToColor_callback FadeToColor;
     /**
      * C type : FadeGrid_callback*
      */
-    public VR_IVRCompositor_FnTable.FadeGrid_callback FadeGrid;
+    public IVRCompositor_FnTable.FadeGrid_callback FadeGrid;
     /**
      * C type : SetSkyboxOverride_callback*
      */
-    public VR_IVRCompositor_FnTable.SetSkyboxOverride_callback SetSkyboxOverride;
+    public IVRCompositor_FnTable.SetSkyboxOverride_callback SetSkyboxOverride;
     /**
      * C type : ClearSkyboxOverride_callback*
      */
-    public VR_IVRCompositor_FnTable.ClearSkyboxOverride_callback ClearSkyboxOverride;
+    public IVRCompositor_FnTable.ClearSkyboxOverride_callback ClearSkyboxOverride;
     /**
      * C type : CompositorBringToFront_callback*
      */
-    public VR_IVRCompositor_FnTable.CompositorBringToFront_callback CompositorBringToFront;
+    public IVRCompositor_FnTable.CompositorBringToFront_callback CompositorBringToFront;
     /**
      * C type : CompositorGoToBack_callback*
      */
-    public VR_IVRCompositor_FnTable.CompositorGoToBack_callback CompositorGoToBack;
+    public IVRCompositor_FnTable.CompositorGoToBack_callback CompositorGoToBack;
     /**
      * C type : CompositorQuit_callback*
      */
-    public VR_IVRCompositor_FnTable.CompositorQuit_callback CompositorQuit;
+    public IVRCompositor_FnTable.CompositorQuit_callback CompositorQuit;
     /**
      * C type : IsFullscreen_callback*
      */
-    public VR_IVRCompositor_FnTable.IsFullscreen_callback IsFullscreen;
+    public IVRCompositor_FnTable.IsFullscreen_callback IsFullscreen;
     /**
      * C type : GetCurrentSceneFocusProcess_callback*
      */
-    public VR_IVRCompositor_FnTable.GetCurrentSceneFocusProcess_callback GetCurrentSceneFocusProcess;
+    public IVRCompositor_FnTable.GetCurrentSceneFocusProcess_callback GetCurrentSceneFocusProcess;
     /**
      * C type : GetLastFrameRenderer_callback*
      */
-    public VR_IVRCompositor_FnTable.GetLastFrameRenderer_callback GetLastFrameRenderer;
+    public IVRCompositor_FnTable.GetLastFrameRenderer_callback GetLastFrameRenderer;
     /**
      * C type : CanRenderScene_callback*
      */
-    public VR_IVRCompositor_FnTable.CanRenderScene_callback CanRenderScene;
+    public IVRCompositor_FnTable.CanRenderScene_callback CanRenderScene;
     /**
      * C type : ShowMirrorWindow_callback*
      */
-    public VR_IVRCompositor_FnTable.ShowMirrorWindow_callback ShowMirrorWindow;
+    public IVRCompositor_FnTable.ShowMirrorWindow_callback ShowMirrorWindow;
     /**
      * C type : HideMirrorWindow_callback*
      */
-    public VR_IVRCompositor_FnTable.HideMirrorWindow_callback HideMirrorWindow;
+    public IVRCompositor_FnTable.HideMirrorWindow_callback HideMirrorWindow;
     /**
      * C type : IsMirrorWindowVisible_callback*
      */
-    public VR_IVRCompositor_FnTable.IsMirrorWindowVisible_callback IsMirrorWindowVisible;
+    public IVRCompositor_FnTable.IsMirrorWindowVisible_callback IsMirrorWindowVisible;
     /**
      * C type : CompositorDumpImages_callback*
      */
-    public VR_IVRCompositor_FnTable.CompositorDumpImages_callback CompositorDumpImages;
+    public IVRCompositor_FnTable.CompositorDumpImages_callback CompositorDumpImages;
     /**
      * C type : ShouldAppRenderWithLowResources_callback*
      */
-    public VR_IVRCompositor_FnTable.ShouldAppRenderWithLowResources_callback ShouldAppRenderWithLowResources;
+    public IVRCompositor_FnTable.ShouldAppRenderWithLowResources_callback ShouldAppRenderWithLowResources;
     /**
      * C type : ForceInterleavedReprojectionOn_callback*
      */
-    public VR_IVRCompositor_FnTable.ForceInterleavedReprojectionOn_callback ForceInterleavedReprojectionOn;
+    public IVRCompositor_FnTable.ForceInterleavedReprojectionOn_callback ForceInterleavedReprojectionOn;
 
     public interface SetTrackingSpace_callback extends Callback {
 
@@ -257,7 +257,7 @@ public class VR_IVRCompositor_FnTable extends Structure {
         void apply(byte bOverride);
     };
 
-    public VR_IVRCompositor_FnTable() {
+    public IVRCompositor_FnTable() {
         super();
     }
 
@@ -265,15 +265,15 @@ public class VR_IVRCompositor_FnTable extends Structure {
         return Arrays.asList("SetTrackingSpace", "GetTrackingSpace", "WaitGetPoses", "GetLastPoses", "GetLastPoseForTrackedDeviceIndex", "Submit", "ClearLastSubmittedFrame", "PostPresentHandoff", "GetFrameTiming", "GetFrameTimeRemaining", "FadeToColor", "FadeGrid", "SetSkyboxOverride", "ClearSkyboxOverride", "CompositorBringToFront", "CompositorGoToBack", "CompositorQuit", "IsFullscreen", "GetCurrentSceneFocusProcess", "GetLastFrameRenderer", "CanRenderScene", "ShowMirrorWindow", "HideMirrorWindow", "IsMirrorWindowVisible", "CompositorDumpImages", "ShouldAppRenderWithLowResources", "ForceInterleavedReprojectionOn");
     }
 
-    public VR_IVRCompositor_FnTable(Pointer peer) {
+    public IVRCompositor_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRCompositor_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRCompositor_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRCompositor_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRCompositor_FnTable implements Structure.ByValue {
 
     };
 }

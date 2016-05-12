@@ -12,16 +12,16 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRNotifications_FnTable extends Structure {
+public class IVRNotifications_FnTable extends Structure {
 
     /**
      * C type : CreateNotification_callback*
      */
-    public VR_IVRNotifications_FnTable.CreateNotification_callback CreateNotification;
+    public IVRNotifications_FnTable.CreateNotification_callback CreateNotification;
     /**
      * C type : RemoveNotification_callback*
      */
-    public VR_IVRNotifications_FnTable.RemoveNotification_callback RemoveNotification;
+    public IVRNotifications_FnTable.RemoveNotification_callback RemoveNotification;
 
     public interface CreateNotification_callback extends Callback {
 
@@ -33,7 +33,7 @@ public class VR_IVRNotifications_FnTable extends Structure {
         int apply(int notificationId);
     };
 
-    public VR_IVRNotifications_FnTable() {
+    public IVRNotifications_FnTable() {
         super();
     }
 
@@ -45,21 +45,21 @@ public class VR_IVRNotifications_FnTable extends Structure {
      * @param CreateNotification C type : CreateNotification_callback*<br>
      * @param RemoveNotification C type : RemoveNotification_callback*
      */
-    public VR_IVRNotifications_FnTable(VR_IVRNotifications_FnTable.CreateNotification_callback CreateNotification, VR_IVRNotifications_FnTable.RemoveNotification_callback RemoveNotification) {
+    public IVRNotifications_FnTable(IVRNotifications_FnTable.CreateNotification_callback CreateNotification, IVRNotifications_FnTable.RemoveNotification_callback RemoveNotification) {
         super();
         this.CreateNotification = CreateNotification;
         this.RemoveNotification = RemoveNotification;
     }
 
-    public VR_IVRNotifications_FnTable(Pointer peer) {
+    public IVRNotifications_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRNotifications_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRNotifications_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRNotifications_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRNotifications_FnTable implements Structure.ByValue {
 
     };
 }

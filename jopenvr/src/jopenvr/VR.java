@@ -1047,7 +1047,47 @@ public class VR implements Library {
      */
     public static native Pointer VR_GetVRInitErrorAsEnglishDescription(int error);
 
-    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE void *VR_CALLTYPE VR_GetGenericInterface( const char *pchInterfaceVersion, EVRInitError *peError )</code>
+     *
+     * Returns the interface of the specified version. This method must be
+     * called after VR_Init. The pointer returned is valid until VR_Shutdown is
+     * called.
+     *
+     * @param pchInterfaceVersion
+     * @param peError
+     * @return
+     */
+    public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, int peError);
+
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE bool VR_CALLTYPE VR_IsInterfaceVersionValid( const char *pchInterfaceVersion )</code>
+     *
+     * Returns whether the interface of the specified version exists.
+     *
+     * @param pchInterfaceVersion
+     * @return
+     */
+    public static native byte VR_IsInterfaceVersionValid(String pchInterfaceVersion);
+
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE uint32_t VR_CALLTYPE VR_GetInitToken()</code>
+     *
+     * Returns a token that represents whether the VR interface handles need to
+     * be reloaded
+     *
+     * @return
+     */
+    public static native int VR_GetInitToken();
+    
+//     /** Returns whether the interface of the specified version exists.
+//	*/
+    
+  
+    public static String IVRSystem_Version = "IVRSystem_012";
     public static String IVRApplications_Version = "IVRApplications_005";
     public static String IVRSettings_Version = "IVRSettings_001";
     public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
@@ -1081,4 +1121,5 @@ public class VR implements Library {
         
         return vrSystem;
     }
+  
 }

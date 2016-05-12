@@ -12,56 +12,56 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRSettings_FnTable extends Structure {
+public class IVRSettings_FnTable extends Structure {
 
     /**
      * C type : GetSettingsErrorNameFromEnum_callback*
      */
-    public VR_IVRSettings_FnTable.GetSettingsErrorNameFromEnum_callback GetSettingsErrorNameFromEnum;
+    public IVRSettings_FnTable.GetSettingsErrorNameFromEnum_callback GetSettingsErrorNameFromEnum;
     /**
      * C type : Sync_callback*
      */
-    public VR_IVRSettings_FnTable.Sync_callback Sync;
+    public IVRSettings_FnTable.Sync_callback Sync;
     /**
      * C type : GetBool_callback*
      */
-    public VR_IVRSettings_FnTable.GetBool_callback GetBool;
+    public IVRSettings_FnTable.GetBool_callback GetBool;
     /**
      * C type : SetBool_callback*
      */
-    public VR_IVRSettings_FnTable.SetBool_callback SetBool;
+    public IVRSettings_FnTable.SetBool_callback SetBool;
     /**
      * C type : GetInt32_callback*
      */
-    public VR_IVRSettings_FnTable.GetInt32_callback GetInt32;
+    public IVRSettings_FnTable.GetInt32_callback GetInt32;
     /**
      * C type : SetInt32_callback*
      */
-    public VR_IVRSettings_FnTable.SetInt32_callback SetInt32;
+    public IVRSettings_FnTable.SetInt32_callback SetInt32;
     /**
      * C type : GetFloat_callback*
      */
-    public VR_IVRSettings_FnTable.GetFloat_callback GetFloat;
+    public IVRSettings_FnTable.GetFloat_callback GetFloat;
     /**
      * C type : SetFloat_callback*
      */
-    public VR_IVRSettings_FnTable.SetFloat_callback SetFloat;
+    public IVRSettings_FnTable.SetFloat_callback SetFloat;
     /**
      * C type : GetString_callback*
      */
-    public VR_IVRSettings_FnTable.GetString_callback GetString;
+    public IVRSettings_FnTable.GetString_callback GetString;
     /**
      * C type : SetString_callback*
      */
-    public VR_IVRSettings_FnTable.SetString_callback SetString;
+    public IVRSettings_FnTable.SetString_callback SetString;
     /**
      * C type : RemoveSection_callback*
      */
-    public VR_IVRSettings_FnTable.RemoveSection_callback RemoveSection;
+    public IVRSettings_FnTable.RemoveSection_callback RemoveSection;
     /**
      * C type : RemoveKeyInSection_callback*
      */
-    public VR_IVRSettings_FnTable.RemoveKeyInSection_callback RemoveKeyInSection;
+    public IVRSettings_FnTable.RemoveKeyInSection_callback RemoveKeyInSection;
 
     public interface GetSettingsErrorNameFromEnum_callback extends Callback {
 
@@ -123,7 +123,7 @@ public class VR_IVRSettings_FnTable extends Structure {
         void apply(Pointer pchSection, Pointer pchSettingsKey, IntByReference peError);
     };
 
-    public VR_IVRSettings_FnTable() {
+    public IVRSettings_FnTable() {
         super();
     }
 
@@ -131,15 +131,15 @@ public class VR_IVRSettings_FnTable extends Structure {
         return Arrays.asList("GetSettingsErrorNameFromEnum", "Sync", "GetBool", "SetBool", "GetInt32", "SetInt32", "GetFloat", "SetFloat", "GetString", "SetString", "RemoveSection", "RemoveKeyInSection");
     }
 
-    public VR_IVRSettings_FnTable(Pointer peer) {
+    public IVRSettings_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRSettings_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRSettings_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRSettings_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRSettings_FnTable implements Structure.ByValue {
 
     };
 }
