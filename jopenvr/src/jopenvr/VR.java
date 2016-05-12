@@ -998,8 +998,8 @@ public class VR implements Library {
     /**
      * Original signature : <code>char* VR_GetVRInitErrorAsEnglishDescription(EVRInitError)</code>
      *
-     * Returns an english string for an EVRInitError. Applications should call VR_GetVRInitErrorAsSymbol instead and use 
-     * that as a key to look up their own localized error message. This function may be called outside of 
+     * Returns an english string for an EVRInitError. Applications should call VR_GetVRInitErrorAsSymbol instead and use
+     * that as a key to look up their own localized error message. This function may be called outside of
      * VR_Init()/VR_Shutdown().
      *
      * @param error
@@ -1019,4 +1019,22 @@ public class VR implements Library {
     public static String IVRControlPanel_Version = "IVRControlPanel_001";
     public static String IVRNotifications_Version = "IVRNotifications_002";
     public static String IVRTrackedCamera_Version = "IVRTrackedCamera_001";
+
+    public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
+
+        IVRSystem vrSystem = null;
+
+        VR_InitInternal(error, applicationType);
+
+        COpenVRContext ctx = new COpenVRContext();
+        ctx.clear();
+
+        if (error.get(0) == EVRInitError.VRInitError_None) {
+            
+//            if(vr_is)
+            vrSystem = new IVRSystem();
+        }
+        
+        return vrSystem;
+    }
 }
