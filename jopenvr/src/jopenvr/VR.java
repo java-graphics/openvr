@@ -1,10 +1,7 @@
 package jopenvr;
 
 import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.IntByReference;
 import java.nio.IntBuffer;
 
 /**
@@ -21,15 +18,142 @@ import java.nio.IntBuffer;
  */
 public class VR implements Library {
 
-    public static final String JNA_LIBRARY_NAME = "openvr_api";
-//    public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(OpenVR.JNA_LIBRARY_NAME);
-    public static NativeLibrary JNA_NATIVE_LIB;
-
-    static {
-        System.loadLibrary(JNA_LIBRARY_NAME);
-        JNA_NATIVE_LIB = NativeLibrary.getInstance(VR.JNA_LIBRARY_NAME);
-        Native.register(VR.class, VR.JNA_NATIVE_LIB);
-    }
+    public static int k_unTrackingStringSize = 32;
+    public static int k_unMaxDriverDebugResponseSize = 32768;
+    public static int k_unTrackedDeviceIndex_Hmd = 0;
+    public static int k_unMaxTrackedDeviceCount = 16;
+    public static long k_unTrackedDeviceIndexInvalid = 4294967295L;
+    /**
+     * No string property will ever be longer than this length
+     */
+    public static int k_unMaxPropertyStringSize = 32768;
+    /**
+     * the number of axes in the controller state
+     */
+    public static int k_unControllerStateAxisCount = 5;
+    public static long k_ulOverlayHandleInvalid = 0L;
+    public static String IVRSystem_Version = "IVRSystem_012";
+    public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
+    /**
+     * The maximum length of an application key.
+     */
+    public static int k_unMaxApplicationKeyLength = 128;
+    public static String IVRApplications_Version = "IVRApplications_005";
+    public static String IVRChaperone_Version = "IVRChaperone_003";
+    public static String IVRChaperoneSetup_Version = "IVRChaperoneSetup_005";
+    public static String IVRCompositor_Version = "IVRCompositor_014";
+    public static int k_unVROverlayMaxKeyLength = 128;
+    public static int k_unVROverlayMaxNameLength = 128;
+    public static int k_unMaxOverlayCount = 32;
+    public static String IVROverlay_Version = "IVROverlay_011";
+    public static String k_pch_Controller_Component_GDC2015 = "gdc2015";
+    public static String k_pch_Controller_Component_Base = "base";
+    public static String k_pch_Controller_Component_Tip = "tip";
+    public static String k_pch_Controller_Component_HandGrip = "handgrip";
+    public static String k_pch_Controller_Component_Status = "status";
+    public static String IVRRenderModels_Version = "IVRRenderModels_005";
+    public static int k_unNotificationTextMaxSize = 256;
+    public static String IVRNotifications_Version = "IVRNotifications_002";
+    public static int k_unMaxSettingsKeyLength = 128;
+    public static String IVRSettings_Version = "IVRSettings_001";
+    public static String k_pch_SteamVR_Section = "steamvr";
+    public static String k_pch_SteamVR_RequireHmd_String = "requireHmd";
+    public static String k_pch_SteamVR_ForcedDriverKey_String = "forcedDriver";
+    public static String k_pch_SteamVR_ForcedHmdKey_String = "forcedHmd";
+    public static String k_pch_SteamVR_DisplayDebug_Bool = "displayDebug";
+    public static String k_pch_SteamVR_DebugProcessPipe_String = "debugProcessPipe";
+    public static String k_pch_SteamVR_EnableDistortion_Bool = "enableDistortion";
+    public static String k_pch_SteamVR_DisplayDebugX_Int32 = "displayDebugX";
+    public static String k_pch_SteamVR_DisplayDebugY_Int32 = "displayDebugY";
+    public static String k_pch_SteamVR_SendSystemButtonToAllApps_Bool = "sendSystemButtonToAllApps";
+    public static String k_pch_SteamVR_LogLevel_Int32 = "loglevel";
+    public static String k_pch_SteamVR_IPD_Float = "ipd";
+    public static String k_pch_SteamVR_Background_String = "background";
+    public static String k_pch_SteamVR_GridColor_String = "gridColor";
+    public static String k_pch_SteamVR_PlayAreaColor_String = "playAreaColor";
+    public static String k_pch_SteamVR_ActivateMultipleDrivers_Bool = "activateMultipleDrivers";
+    public static String k_pch_SteamVR_PowerOffOnExit_Bool = "powerOffOnExit";
+    public static String k_pch_SteamVR_StandbyAppRunningTimeout_Float = "standbyAppRunningTimeout";
+    public static String k_pch_SteamVR_StandbyNoAppTimeout_Float = "standbyNoAppTimeout";
+    public static String k_pch_SteamVR_DirectMode_Bool = "directMode";
+    public static String k_pch_SteamVR_DirectModeEdidVid_Int32 = "directModeEdidVid";
+    public static String k_pch_SteamVR_DirectModeEdidPid_Int32 = "directModeEdidPid";
+    public static String k_pch_SteamVR_UsingSpeakers_Bool = "usingSpeakers";
+    public static String k_pch_SteamVR_SpeakersForwardYawOffsetDegrees_Float = "speakersForwardYawOffsetDegrees";
+    public static String k_pch_SteamVR_BaseStationPowerManagement_Bool = "basestationPowerManagement";
+    public static String k_pch_SteamVR_NeverKillProcesses_Bool = "neverKillProcesses";
+    public static String k_pch_SteamVR_RenderTargetMultiplier_Float = "renderTargetMultiplier";
+    public static String k_pch_SteamVR_AllowReprojection_Bool = "allowReprojection";
+    public static String k_pch_Lighthouse_Section = "driver_lighthouse";
+    public static String k_pch_Lighthouse_DisableIMU_Bool = "disableimu";
+    public static String k_pch_Lighthouse_UseDisambiguation_String = "usedisambiguation";
+    public static String k_pch_Lighthouse_DisambiguationDebug_Int32 = "disambiguationdebug";
+    public static String k_pch_Lighthouse_PrimaryBasestation_Int32 = "primarybasestation";
+    public static String k_pch_Lighthouse_LighthouseName_String = "lighthousename";
+    public static String k_pch_Lighthouse_MaxIncidenceAngleDegrees_Float = "maxincidenceangledegrees";
+    public static String k_pch_Lighthouse_UseLighthouseDirect_Bool = "uselighthousedirect";
+    public static String k_pch_Lighthouse_DBHistory_Bool = "dbhistory";
+    public static String k_pch_Lighthouse_OriginOffsetX_Float = "originoffsetx";
+    public static String k_pch_Lighthouse_OriginOffsetY_Float = "originoffsety";
+    public static String k_pch_Lighthouse_OriginOffsetZ_Float = "originoffsetz";
+    public static String k_pch_Lighthouse_HeadingOffset_Float = "headingoffset";
+    public static String k_pch_Null_Section = "driver_null";
+    public static String k_pch_Null_EnableNullDriver_Bool = "enable";
+    public static String k_pch_Null_SerialNumber_String = "serialNumber";
+    public static String k_pch_Null_ModelNumber_String = "modelNumber";
+    public static String k_pch_Null_WindowX_Int32 = "windowX";
+    public static String k_pch_Null_WindowY_Int32 = "windowY";
+    public static String k_pch_Null_WindowWidth_Int32 = "windowWidth";
+    public static String k_pch_Null_WindowHeight_Int32 = "windowHeight";
+    public static String k_pch_Null_RenderWidth_Int32 = "renderWidth";
+    public static String k_pch_Null_RenderHeight_Int32 = "renderHeight";
+    public static String k_pch_Null_SecondsFromVsyncToPhotons_Float = "secondsFromVsyncToPhotons";
+    public static String k_pch_Null_DisplayFrequency_Float = "displayFrequency";
+    public static String k_pch_UserInterface_Section = "userinterface";
+    public static String k_pch_UserInterface_StatusAlwaysOnTop_Bool = "StatusAlwaysOnTop";
+    public static String k_pch_Notifications_Section = "notifications";
+    public static String k_pch_Notifications_DoNotDisturb_Bool = "DoNotDisturb";
+    public static String k_pch_Keyboard_Section = "keyboard";
+    public static String k_pch_Keyboard_TutorialCompletions = "TutorialCompletions";
+    public static String k_pch_Keyboard_ScaleX = "ScaleX";
+    public static String k_pch_Keyboard_ScaleY = "ScaleY";
+    public static String k_pch_Keyboard_OffsetLeftX = "OffsetLeftX";
+    public static String k_pch_Keyboard_OffsetRightX = "OffsetRightX";
+    public static String k_pch_Keyboard_OffsetY = "OffsetY";
+    public static String k_pch_Keyboard_Smoothing = "Smoothing";
+    public static String k_pch_Perf_Section = "perfcheck";
+    public static String k_pch_Perf_HeuristicActive_Bool = "heuristicActive";
+    public static String k_pch_Perf_NotifyInHMD_Bool = "warnInHMD";
+    public static String k_pch_Perf_NotifyOnlyOnce_Bool = "warnOnlyOnce";
+    public static String k_pch_Perf_AllowTimingStore_Bool = "allowTimingStore";
+    public static String k_pch_Perf_SaveTimingsOnExit_Bool = "saveTimingsOnExit";
+    public static String k_pch_Perf_TestData_Float = "perfTestData";
+    public static String k_pch_CollisionBounds_Section = "collisionBounds";
+    public static String k_pch_CollisionBounds_Style_Int32 = "CollisionBoundsStyle";
+    public static String k_pch_CollisionBounds_GroundPerimeterOn_Bool = "CollisionBoundsGroundPerimeterOn";
+    public static String k_pch_CollisionBounds_CenterMarkerOn_Bool = "CollisionBoundsCenterMarkerOn";
+    public static String k_pch_CollisionBounds_PlaySpaceOn_Bool = "CollisionBoundsPlaySpaceOn";
+    public static String k_pch_CollisionBounds_FadeDistance_Float = "CollisionBoundsFadeDistance";
+    public static String k_pch_CollisionBounds_ColorGammaR_Int32 = "CollisionBoundsColorGammaR";
+    public static String k_pch_CollisionBounds_ColorGammaG_Int32 = "CollisionBoundsColorGammaG";
+    public static String k_pch_CollisionBounds_ColorGammaB_Int32 = "CollisionBoundsColorGammaB";
+    public static String k_pch_CollisionBounds_ColorGammaA_Int32 = "CollisionBoundsColorGammaA";
+    public static String k_pch_Camera_Section = "camera";
+    public static String k_pch_Camera_EnableCamera_Bool = "enableCamera";
+    public static String k_pch_Camera_EnableCameraInDashboard_Bool = "enableCameraInDashboard";
+    public static String k_pch_Camera_EnableCameraForCollisionBounds_Bool = "enableCameraForCollisionBounds";
+    public static String k_pch_Camera_EnableCameraForRoomView_Bool = "enableCameraForRoomView";
+    public static String k_pch_Camera_BoundsColorGammaR_Int32 = "cameraBoundsColorGammaR";
+    public static String k_pch_Camera_BoundsColorGammaG_Int32 = "cameraBoundsColorGammaG";
+    public static String k_pch_Camera_BoundsColorGammaB_Int32 = "cameraBoundsColorGammaB";
+    public static String k_pch_Camera_BoundsColorGammaA_Int32 = "cameraBoundsColorGammaA";
+    public static String k_pch_audio_Section = "audio";
+    public static String k_pch_audio_OnPlaybackDevice_String = "onPlaybackDevice";
+    public static String k_pch_audio_OnRecordDevice_String = "onRecordDevice";
+    public static String k_pch_audio_OnPlaybackMirrorDevice_String = "onPlaybackMirrorDevice";
+    public static String k_pch_audio_OffPlaybackDevice_String = "offPlaybackDevice";
+    public static String k_pch_audio_OffRecordDevice_String = "offRecordDevice";
+    public static String k_pch_audio_VIVEHDMIGain = "viveHDMIGain";
 
     public static class EVREye {
 
@@ -67,13 +191,6 @@ public class VR implements Library {
         public static final int TrackingResult_Running_OutOfRange = 201;
     };
 
-    public static final int k_unTrackingStringSize = 32;
-    public static final int k_unMaxDriverDebugResponseSize = 32768;
-
-    public static final int k_unTrackedDeviceIndex_Hmd = 0;
-    public static final int k_unMaxTrackedDeviceCount = 16;
-    public static final int k_unTrackedDeviceIndexInvalid = 0xFFFFFFFF;
-
     /**
      * Describes what kind of object is being tracked at a given ID.
      */
@@ -82,9 +199,7 @@ public class VR implements Library {
         public static final int TrackedDeviceClass_Invalid = 0; // the ID was not valid.
         public static final int TrackedDeviceClass_HMD = 1; // Head-Mounted Displays
         public static final int TrackedDeviceClass_Controller = 2; // Tracked controllers
-        // Camera and base stations that serve as tracking reference points
-        public static final int TrackedDeviceClass_TrackingReference = 4;
-
+        public static final int TrackedDeviceClass_TrackingReference = 4;// Camera and base stations that serve as tracking reference points
         public static final int TrackedDeviceClass_Other = 1000;
     };
 
@@ -104,12 +219,9 @@ public class VR implements Library {
      */
     public static class ETrackingUniverseOrigin {
 
-        // Poses are provided relative to the seated zero pose
-        public static final int TrackingUniverseSeated = 0;
-        // Poses are provided relative to the safe bounds configured by the user
-        public static final int TrackingUniverseStanding = 1;
-        // Poses are provided in the coordinate system defined by the driver. You probably don't want this one.
-        public static final int TrackingUniverseRawAndUncalibrated = 2;
+        public static final int TrackingUniverseSeated = 0;// Poses are provided relative to the seated zero pose
+        public static final int TrackingUniverseStanding = 1;// Poses are provided relative to the safe bounds configured by the user
+        public static final int TrackingUniverseRawAndUncalibrated = 2;// Poses are provided in the coordinate system defined by the driver. You probably don't want this one.
     };
 
     /**
@@ -211,10 +323,6 @@ public class VR implements Library {
         public static final int Prop_VendorSpecific_Reserved_Start = 10000;
         public static final int Prop_VendorSpecific_Reserved_End = 10999;
     };
-    /**
-     * No string property will ever be longer than this length
-     */
-    public static final int k_unMaxPropertyStringSize = 32768;
 
     /**
      * Used to return errors that occur when reading properties.
@@ -436,18 +544,14 @@ public class VR implements Library {
         public static final int k_EButton_Max = 64;
     };
 
-    public static long ButtonMaskFromId(int id) {
-        return (1L << id);
-    }
-
     /**
      * used for simulated mouse events in overlay space
      */
     public static class EVRMouseButton {
 
-        public static final int VRMouseButton_Left = 0x0001;
-        public static final int VRMouseButton_Right = 0x0002;
-        public static final int VRMouseButton_Middle = 0x0004;
+        public static final int VRMouseButton_Left = 1;
+        public static final int VRMouseButton_Right = 2;
+        public static final int VRMouseButton_Middle = 4;
     };
 
     /**
@@ -462,10 +566,6 @@ public class VR implements Library {
         public static final int k_eControllerAxis_Joystick = 2;
         public static final int k_eControllerAxis_Trigger = 3;  // Analog trigger data is in the X axis
     };
-    /**
-     * the number of axes in the controller state
-     */
-    public static final int k_unControllerStateAxisCount = 5;
 
     /**
      * determines how to provide output to the application of various event
@@ -487,11 +587,8 @@ public class VR implements Library {
         public static final int COLLISION_BOUNDS_STYLE_SQUARES = 2;
         public static final int COLLISION_BOUNDS_STYLE_ADVANCED = 3;
         public static final int COLLISION_BOUNDS_STYLE_NONE = 4;
-
         public static final int COLLISION_BOUNDS_STYLE_COUNT = 5;
     };
-
-    public static final long k_ulOverlayHandleInvalid = 0;
 
     /**
      * Errors that can occur around VR overlays
@@ -684,11 +781,6 @@ public class VR implements Library {
     };
 
     /**
-     * The maximum length of an application key.
-     */
-    public static final int k_unMaxApplicationKeyLength = 128;
-
-    /**
      * these are the properties available on applications.
      */
     public static class EVRApplicationProperty {
@@ -726,17 +818,6 @@ public class VR implements Library {
         public static final int VRApplicationTransition_NewAppLaunched = 20;
     };
 
-    public static class EVRSettingsError {
-
-        public static final int VRSettingsError_None = 0;
-        public static final int VRSettingsError_IPCFailed = 1;
-        public static final int VRSettingsError_WriteFailed = 2;
-        public static final int VRSettingsError_ReadFailed = 3;
-    };
-
-    // The maximum length of a settings key
-    public static final int k_unMaxSettingsKeyLength = 128;
-
     public static class ChaperoneCalibrationState {
 
         // OK!
@@ -773,7 +854,7 @@ public class VR implements Library {
 
     public static class EChaperoneImportFlags {
 
-        public static final int EChaperoneImport_BoundsOnly = 0x0001;
+        public static final int EChaperoneImport_BoundsOnly = 1;
     };
 
     /**
@@ -791,71 +872,6 @@ public class VR implements Library {
         public static final int VRCompositorError_SharedTexturesNotSupported = 106;
         public static final int VRCompositorError_IndexOutOfRange = 107;
     };
-
-    public static final int VRCompositor_ReprojectionReason_Cpu = 0x01;
-    public static final int VRCompositor_ReprojectionReason_Gpu = 0x02;
-
-    public static class EVRNotificationType {
-
-        /**
-         * Transient notifications are automatically hidden after a period of
-         * time set by the user. They are used for things like information and
-         * chat messages that do not require user interaction.
-         */
-        public static final int EVRNotificationType_Transient = 0;
-        /**
-         * Persistent notifications are shown to the user until they are hidden
-         * by calling RemoveNotification(). They are used for things like phone
-         * calls and alarms that require user interaction.
-         */
-        public static final int EVRNotificationType_Persistent = 1;
-    };
-
-    public static class EVRNotificationStyle {
-
-        /**
-         * Creates a notification with minimal external styling.
-         */
-        public static final int EVRNotificationStyle_None = 0;
-        /**
-         * Used for notifications about overlay-level status. In Steam this is
-         * used for events like downloads completing.
-         */
-        public static final int EVRNotificationStyle_Application = 100;
-        /**
-         * Used for notifications about contacts that are unknown or not
-         * available. In Steam this is used for friend invitations and offline
-         * friends.
-         */
-        public static final int EVRNotificationStyle_Contact_Disabled = 200;
-        /**
-         * Used for notifications about contacts that are available but
-         * inactive. In Steam this is used for friends that are online but not
-         * playing a game.
-         */
-        public static final int EVRNotificationStyle_Contact_Enabled = 201;
-        /**
-         * Used for notifications about contacts that are available and active.
-         * In Steam this is used for friends that are online and currently
-         * running a game.
-         */
-        public static final int EVRNotificationStyle_Contact_Active = 202;
-    };
-
-    public static final int k_unNotificationTextMaxSize = 256;
-    /**
-     * The maximum length of an overlay name in bytes, counting the terminating
-     * null character.
-     */
-    public static final int k_unVROverlayMaxKeyLength = 128;
-    /**
-     * The maximum number of overlays that can exist in the system at one time.
-     */
-    public static final int k_unVROverlayMaxNameLength = 128;
-    /**
-     * The maximum number of overlays that can exist in the system at one time.
-     */
-    public static final int k_unMaxOverlayCount = 32;
 
     /**
      * Types of input supported by VR Overlays
@@ -964,13 +980,68 @@ public class VR implements Library {
 
     public static class EVRComponentProperty {
 
-        public static final int VRComponentProperty_IsStatic = (1 << 0);
-        public static final int VRComponentProperty_IsVisible = (1 << 1);
-        public static final int VRComponentProperty_IsTouched = (1 << 2);
-        public static final int VRComponentProperty_IsPressed = (1 << 3);
-        public static final int VRComponentProperty_IsScrolled = (1 << 4);
+        public static final int VRComponentProperty_IsStatic = (1);
+        public static final int VRComponentProperty_IsVisible = (2);
+        public static final int VRComponentProperty_IsTouched = (4);
+        public static final int VRComponentProperty_IsPressed = (8);
+        public static final int VRComponentProperty_IsScrolled = (16);
     };
 
+    public static class EVRNotificationType {
+
+        /**
+         * Transient notifications are automatically hidden after a period of
+         * time set by the user. They are used for things like information and
+         * chat messages that do not require user interaction.
+         */
+        public static final int EVRNotificationType_Transient = 0;
+        /**
+         * Persistent notifications are shown to the user until they are hidden
+         * by calling RemoveNotification(). They are used for things like phone
+         * calls and alarms that require user interaction.
+         */
+        public static final int EVRNotificationType_Persistent = 1;
+    };
+
+    public static class EVRNotificationStyle {
+
+        /**
+         * Creates a notification with minimal external styling.
+         */
+        public static final int EVRNotificationStyle_None = 0;
+        /**
+         * Used for notifications about overlay-level status. In Steam this is
+         * used for events like downloads completing.
+         */
+        public static final int EVRNotificationStyle_Application = 100;
+        /**
+         * Used for notifications about contacts that are unknown or not
+         * available. In Steam this is used for friend invitations and offline
+         * friends.
+         */
+        public static final int EVRNotificationStyle_Contact_Disabled = 200;
+        /**
+         * Used for notifications about contacts that are available but
+         * inactive. In Steam this is used for friends that are online but not
+         * playing a game.
+         */
+        public static final int EVRNotificationStyle_Contact_Enabled = 201;
+        /**
+         * Used for notifications about contacts that are available and active.
+         * In Steam this is used for friends that are online and currently
+         * running a game.
+         */
+        public static final int EVRNotificationStyle_Contact_Active = 202;
+    };
+
+    public static class EVRSettingsError {
+
+        public static final int VRSettingsError_None = 0;
+        public static final int VRSettingsError_IPCFailed = 1;
+        public static final int VRSettingsError_WriteFailed = 2;
+        public static final int VRSettingsError_ReadFailed = 3;
+    };
+    
     /**
      * Global entry points<br>
      * Original signature :
@@ -1083,43 +1154,52 @@ public class VR implements Library {
      */
     public static native int VR_GetInitToken();
     
-//     /** Returns whether the interface of the specified version exists.
-//	*/
     
-  
-    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
-    public static String IVRApplications_Version = "IVRApplications_005";
-    public static String IVRSettings_Version = "IVRSettings_001";
-    public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";
-    public static String IVRChaperone_Version = "IVRChaperone_003";
-    public static String IVRChaperoneSetup_Version = "IVRChaperoneSetup_005";
-    public static String IVRCompositor_Version = "IVRCompositor_014";
-    public static String IVROverlay_Version = "IVROverlay_011";
-    public static String IVRRenderModels_Version = "IVRRenderModels_005";
-    public static String IVRControlPanel_Version = "IVRControlPanel_001";
-    public static String IVRNotifications_Version = "IVRNotifications_002";
-    public static String IVRTrackedCamera_Version = "IVRTrackedCamera_001";
-    public static String k_pch_Controller_Component_GDC2015 = "gdc2015"; // Canonical coordinate system of the gdc 2015 wired controller, provided for backwards compatibility
-    public static String k_pch_Controller_Component_Base = "base";// For controllers with an unambiguous 'base'.
-    public static String k_pch_Controller_Component_Tip = "tip";// For controllers with an unambiguous 'tip' (used for 'laser-pointing')
-    public static String k_pch_Controller_Component_HandGrip = "handgrip";// Neutral, ambidextrous hand-pose when holding controller. On plane between neutrally posed index finger and thumb
-    public static String k_pch_Controller_Component_Status = "status";// For controllers with an unambiguous 'base'.
-
     public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
 
         IVRSystem vrSystem = null;
 
-        VR_InitInternal(error, applicationType);
-        COpenVRContext ctx = new COpenVRContext();
-        ctx.clear();
+        VR.VR_InitInternal(error, applicationType);
+//        VR_InitInternal(error, applicationType);
 
-        if (error.get(0) == EVRInitError.VRInitError_None) {
-            
-//            if(vr_is)
-            vrSystem = new IVRSystem(VR_GetGenericInterface(VR.IVRSystem_Version, error));
+        if (error.get(0) == 0) {
+            // ok, try and get the vrsystem pointer..
+            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
+//            hmd = new IVRSystem();
+            COpenVRContext ctx = new COpenVRContext.ByValue();
+            ctx.clear();
         }
+        if (vrSystem == null || error.get(0) != 0) {
+            System.out.println("OpenVR Initialize Result: " + VR.VR_GetVRInitErrorAsEnglishDescription(error.get(0)).getString(0));
+            return null;
+        }
+
+        System.out.println("OpenVR initialized & VR connected.");
+
+        vrSystem.setAutoSynch(false);
+        vrSystem.read();
+
+        // init controllers for the first time
+//            VRInput._updateConnectedControllers();
+//
+//            // init bounds & chaperone info
+//            VRBounds.init();
+//            
+        
+//        COpenVRContext ctx = new COpenVRContext();
+//        ctx.clear();
+//
+//        if (error.get(0) == EVRInitError.VRInitError_None) {
+////            byte b = VR_IsInterfaceVersionValid(IVROverlay_Version);
+////            if(VR.VR_IsInterfaceVersionValid(IVROverlay_Version))
+//            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
+//        }
+        if (vrSystem == null) {
+            return null;
+        }
+        vrSystem.setAutoSynch(false);
+        vrSystem.read();
         
         return vrSystem;
     }
-  
 }
