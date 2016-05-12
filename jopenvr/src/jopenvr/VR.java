@@ -1087,7 +1087,7 @@ public class VR implements Library {
 //	*/
     
   
-    public static String IVRSystem_Version = "IVRSystem_012";
+    public static String IVRSystem_Version = "FnTable:IVRSystem_012";
     public static String IVRApplications_Version = "IVRApplications_005";
     public static String IVRSettings_Version = "IVRSettings_001";
     public static String IVRExtendedDisplay_Version = "IVRExtendedDisplay_001";

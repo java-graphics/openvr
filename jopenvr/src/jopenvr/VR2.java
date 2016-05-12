@@ -1,10 +1,7 @@
 package jopenvr;
 
 import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.IntByReference;
 import java.nio.IntBuffer;
 
 /**
@@ -989,7 +986,7 @@ public class VR2 implements Library {
         public static final int VRComponentProperty_IsPressed = (8);
         public static final int VRComponentProperty_IsScrolled = (16);
     };
-    
+
     public static class EVRNotificationType {
 
         /**
@@ -1005,7 +1002,7 @@ public class VR2 implements Library {
          */
         public static final int EVRNotificationType_Persistent = 1;
     };
-    
+
     public static class EVRNotificationStyle {
 
         /**
@@ -1036,7 +1033,7 @@ public class VR2 implements Library {
          */
         public static final int EVRNotificationStyle_Contact_Active = 202;
     };
-    
+
     public static class EVRSettingsError {
 
         public static final int VRSettingsError_None = 0;
@@ -1045,4 +1042,75 @@ public class VR2 implements Library {
         public static final int VRSettingsError_ReadFailed = 3;
     };
 
+    /**
+     * Global entry points<br>
+     * Original signature :
+     * <code>intptr_t VR_InitInternal(EVRInitError*, EVRApplicationType)</code>
+     *
+     * @param peError
+     * @param eType
+     * @return
+     */
+    public static native Pointer VR_InitInternal(IntBuffer peError, int eType);
+
+    /**
+     * Original signature :
+     * <code>intptr_t VR_GetGenericInterface(const char*, EVRInitError*)</code>
+     *
+     * Returns the class of the specified version. This method must be called
+     * after VR_Init. The pointer returned is valid until VR_Shutdown is called.
+     *
+     * @param pchInterfaceVersion
+     * @param peError
+     * @return
+     */
+    public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, IntBuffer peError);
+
+    public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
+
+        IVRSystem vrSystem = null;
+
+        VR.VR_InitInternal(error, applicationType);
+//        VR_InitInternal(error, applicationType);
+
+        if (error.get(0) == 0) {
+            // ok, try and get the vrsystem pointer..
+            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
+//            hmd = new IVRSystem();
+            COpenVRContext ctx = new COpenVRContext.ByValue();
+            ctx.clear();
+        }
+        if (vrSystem == null || error.get(0) != 0) {
+            System.out.println("OpenVR Initialize Result: " + VR.VR_GetVRInitErrorAsEnglishDescription(error.get(0)).getString(0));
+            return null;
+        }
+
+        System.out.println("OpenVR initialized & VR connected.");
+
+        vrSystem.setAutoSynch(false);
+        vrSystem.read();
+
+        // init controllers for the first time
+//            VRInput._updateConnectedControllers();
+//
+//            // init bounds & chaperone info
+//            VRBounds.init();
+//            
+        
+//        COpenVRContext ctx = new COpenVRContext();
+//        ctx.clear();
+//
+//        if (error.get(0) == EVRInitError.VRInitError_None) {
+////            byte b = VR_IsInterfaceVersionValid(IVROverlay_Version);
+////            if(VR.VR_IsInterfaceVersionValid(IVROverlay_Version))
+//            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
+//        }
+        if (vrSystem == null) {
+            return null;
+        }
+        vrSystem.setAutoSynch(false);
+        vrSystem.read();
+
+        return vrSystem;
+    }
 }
