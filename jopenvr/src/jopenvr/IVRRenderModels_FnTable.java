@@ -12,64 +12,64 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRRenderModels_FnTable extends Structure {
+public class IVRRenderModels_FnTable extends Structure {
 
     /**
      * C type : LoadRenderModel_Async_callback*
      */
-    public VR_IVRRenderModels_FnTable.LoadRenderModel_Async_callback LoadRenderModel_Async;
+    public IVRRenderModels_FnTable.LoadRenderModel_Async_callback LoadRenderModel_Async;
     /**
      * C type : FreeRenderModel_callback*
      */
-    public VR_IVRRenderModels_FnTable.FreeRenderModel_callback FreeRenderModel;
+    public IVRRenderModels_FnTable.FreeRenderModel_callback FreeRenderModel;
     /**
      * C type : LoadTexture_Async_callback*
      */
-    public VR_IVRRenderModels_FnTable.LoadTexture_Async_callback LoadTexture_Async;
+    public IVRRenderModels_FnTable.LoadTexture_Async_callback LoadTexture_Async;
     /**
      * C type : FreeTexture_callback*
      */
-    public VR_IVRRenderModels_FnTable.FreeTexture_callback FreeTexture;
+    public IVRRenderModels_FnTable.FreeTexture_callback FreeTexture;
     /**
      * C type : LoadTextureD3D11_Async_callback*
      */
-    public VR_IVRRenderModels_FnTable.LoadTextureD3D11_Async_callback LoadTextureD3D11_Async;
+    public IVRRenderModels_FnTable.LoadTextureD3D11_Async_callback LoadTextureD3D11_Async;
     /**
      * C type : FreeTextureD3D11_callback*
      */
-    public VR_IVRRenderModels_FnTable.FreeTextureD3D11_callback FreeTextureD3D11;
+    public IVRRenderModels_FnTable.FreeTextureD3D11_callback FreeTextureD3D11;
     /**
      * C type : GetRenderModelName_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetRenderModelName_callback GetRenderModelName;
+    public IVRRenderModels_FnTable.GetRenderModelName_callback GetRenderModelName;
     /**
      * C type : GetRenderModelCount_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetRenderModelCount_callback GetRenderModelCount;
+    public IVRRenderModels_FnTable.GetRenderModelCount_callback GetRenderModelCount;
     /**
      * C type : GetComponentCount_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetComponentCount_callback GetComponentCount;
+    public IVRRenderModels_FnTable.GetComponentCount_callback GetComponentCount;
     /**
      * C type : GetComponentName_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetComponentName_callback GetComponentName;
+    public IVRRenderModels_FnTable.GetComponentName_callback GetComponentName;
     /**
      * C type : GetComponentButtonMask_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetComponentButtonMask_callback GetComponentButtonMask;
+    public IVRRenderModels_FnTable.GetComponentButtonMask_callback GetComponentButtonMask;
     /**
      * C type : GetComponentRenderModelName_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetComponentRenderModelName_callback GetComponentRenderModelName;
+    public IVRRenderModels_FnTable.GetComponentRenderModelName_callback GetComponentRenderModelName;
     /**
      * C type : GetComponentState_callback*
      */
-    public VR_IVRRenderModels_FnTable.GetComponentState_callback GetComponentState;
+    public IVRRenderModels_FnTable.GetComponentState_callback GetComponentState;
     /**
      * C type : RenderModelHasComponent_callback*
      */
-    public VR_IVRRenderModels_FnTable.RenderModelHasComponent_callback RenderModelHasComponent;
+    public IVRRenderModels_FnTable.RenderModelHasComponent_callback RenderModelHasComponent;
 
     public interface LoadRenderModel_Async_callback extends Callback {
 
@@ -141,7 +141,7 @@ public class VR_IVRRenderModels_FnTable extends Structure {
         byte apply(Pointer pchRenderModelName, Pointer pchComponentName);
     };
 
-    public VR_IVRRenderModels_FnTable() {
+    public IVRRenderModels_FnTable() {
         super();
     }
 
@@ -149,15 +149,15 @@ public class VR_IVRRenderModels_FnTable extends Structure {
         return Arrays.asList("LoadRenderModel_Async", "FreeRenderModel", "LoadTexture_Async", "FreeTexture", "LoadTextureD3D11_Async", "FreeTextureD3D11", "GetRenderModelName", "GetRenderModelCount", "GetComponentCount", "GetComponentName", "GetComponentButtonMask", "GetComponentRenderModelName", "GetComponentState", "RenderModelHasComponent");
     }
 
-    public VR_IVRRenderModels_FnTable(Pointer peer) {
+    public IVRRenderModels_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRRenderModels_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRRenderModels_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRRenderModels_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRRenderModels_FnTable implements Structure.ByValue {
 
     };
 }

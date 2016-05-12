@@ -12,40 +12,40 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRChaperone_FnTable extends Structure {
+public class IVRChaperone_FnTable extends Structure {
 
     /**
      * C type : GetCalibrationState_callback*
      */
-    public VR_IVRChaperone_FnTable.GetCalibrationState_callback GetCalibrationState;
+    public IVRChaperone_FnTable.GetCalibrationState_callback GetCalibrationState;
     /**
      * C type : GetPlayAreaSize_callback*
      */
-    public VR_IVRChaperone_FnTable.GetPlayAreaSize_callback GetPlayAreaSize;
+    public IVRChaperone_FnTable.GetPlayAreaSize_callback GetPlayAreaSize;
     /**
      * C type : GetPlayAreaRect_callback*
      */
-    public VR_IVRChaperone_FnTable.GetPlayAreaRect_callback GetPlayAreaRect;
+    public IVRChaperone_FnTable.GetPlayAreaRect_callback GetPlayAreaRect;
     /**
      * C type : ReloadInfo_callback*
      */
-    public VR_IVRChaperone_FnTable.ReloadInfo_callback ReloadInfo;
+    public IVRChaperone_FnTable.ReloadInfo_callback ReloadInfo;
     /**
      * C type : SetSceneColor_callback*
      */
-    public VR_IVRChaperone_FnTable.SetSceneColor_callback SetSceneColor;
+    public IVRChaperone_FnTable.SetSceneColor_callback SetSceneColor;
     /**
      * C type : GetBoundsColor_callback*
      */
-    public VR_IVRChaperone_FnTable.GetBoundsColor_callback GetBoundsColor;
+    public IVRChaperone_FnTable.GetBoundsColor_callback GetBoundsColor;
     /**
      * C type : AreBoundsVisible_callback*
      */
-    public VR_IVRChaperone_FnTable.AreBoundsVisible_callback AreBoundsVisible;
+    public IVRChaperone_FnTable.AreBoundsVisible_callback AreBoundsVisible;
     /**
      * C type : ForceBoundsVisible_callback*
      */
-    public VR_IVRChaperone_FnTable.ForceBoundsVisible_callback ForceBoundsVisible;
+    public IVRChaperone_FnTable.ForceBoundsVisible_callback ForceBoundsVisible;
 
     public interface GetCalibrationState_callback extends Callback {
 
@@ -87,7 +87,7 @@ public class VR_IVRChaperone_FnTable extends Structure {
         void apply(byte bForce);
     };
 
-    public VR_IVRChaperone_FnTable() {
+    public IVRChaperone_FnTable() {
         super();
     }
 
@@ -105,7 +105,7 @@ public class VR_IVRChaperone_FnTable extends Structure {
      * @param AreBoundsVisible C type : AreBoundsVisible_callback*<br>
      * @param ForceBoundsVisible C type : ForceBoundsVisible_callback*
      */
-    public VR_IVRChaperone_FnTable(VR_IVRChaperone_FnTable.GetCalibrationState_callback GetCalibrationState, VR_IVRChaperone_FnTable.GetPlayAreaSize_callback GetPlayAreaSize, VR_IVRChaperone_FnTable.GetPlayAreaRect_callback GetPlayAreaRect, VR_IVRChaperone_FnTable.ReloadInfo_callback ReloadInfo, VR_IVRChaperone_FnTable.SetSceneColor_callback SetSceneColor, VR_IVRChaperone_FnTable.GetBoundsColor_callback GetBoundsColor, VR_IVRChaperone_FnTable.AreBoundsVisible_callback AreBoundsVisible, VR_IVRChaperone_FnTable.ForceBoundsVisible_callback ForceBoundsVisible) {
+    public IVRChaperone_FnTable(IVRChaperone_FnTable.GetCalibrationState_callback GetCalibrationState, IVRChaperone_FnTable.GetPlayAreaSize_callback GetPlayAreaSize, IVRChaperone_FnTable.GetPlayAreaRect_callback GetPlayAreaRect, IVRChaperone_FnTable.ReloadInfo_callback ReloadInfo, IVRChaperone_FnTable.SetSceneColor_callback SetSceneColor, IVRChaperone_FnTable.GetBoundsColor_callback GetBoundsColor, IVRChaperone_FnTable.AreBoundsVisible_callback AreBoundsVisible, IVRChaperone_FnTable.ForceBoundsVisible_callback ForceBoundsVisible) {
         super();
         this.GetCalibrationState = GetCalibrationState;
         this.GetPlayAreaSize = GetPlayAreaSize;
@@ -117,15 +117,15 @@ public class VR_IVRChaperone_FnTable extends Structure {
         this.ForceBoundsVisible = ForceBoundsVisible;
     }
 
-    public VR_IVRChaperone_FnTable(Pointer peer) {
+    public IVRChaperone_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRChaperone_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRChaperone_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRChaperone_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRChaperone_FnTable implements Structure.ByValue {
 
     };
 }

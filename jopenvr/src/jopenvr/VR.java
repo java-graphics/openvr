@@ -1106,14 +1106,13 @@ public class VR implements Library {
         IVRSystem vrSystem = null;
 
         VR_InitInternal(error, applicationType);
-
         COpenVRContext ctx = new COpenVRContext();
         ctx.clear();
 
         if (error.get(0) == EVRInitError.VRInitError_None) {
             
 //            if(vr_is)
-            vrSystem = new IVRSystem();
+            vrSystem = new IVRSystem(VR_GetGenericInterface(VR.IVRSystem_Version, error));
         }
         
         return vrSystem;

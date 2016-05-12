@@ -14,104 +14,104 @@ import java.util.List;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class VR_IVRTrackedCamera_FnTable extends Structure {
+public class IVRTrackedCamera_FnTable extends Structure {
 
     /**
      * C type : HasCamera_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.HasCamera_callback HasCamera;
+    public IVRTrackedCamera_FnTable.HasCamera_callback HasCamera;
     /**
      * C type : GetCameraFirmwareDescription_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetCameraFirmwareDescription_callback GetCameraFirmwareDescription;
+    public IVRTrackedCamera_FnTable.GetCameraFirmwareDescription_callback GetCameraFirmwareDescription;
     /**
      * C type : GetCameraFrameDimensions_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetCameraFrameDimensions_callback GetCameraFrameDimensions;
+    public IVRTrackedCamera_FnTable.GetCameraFrameDimensions_callback GetCameraFrameDimensions;
     /**
      * C type : SetCameraVideoStreamFormat_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.SetCameraVideoStreamFormat_callback SetCameraVideoStreamFormat;
+    public IVRTrackedCamera_FnTable.SetCameraVideoStreamFormat_callback SetCameraVideoStreamFormat;
     /**
      * C type : GetCameraVideoStreamFormat_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetCameraVideoStreamFormat_callback GetCameraVideoStreamFormat;
+    public IVRTrackedCamera_FnTable.GetCameraVideoStreamFormat_callback GetCameraVideoStreamFormat;
     /**
      * C type : EnableCameraForStreaming_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.EnableCameraForStreaming_callback EnableCameraForStreaming;
+    public IVRTrackedCamera_FnTable.EnableCameraForStreaming_callback EnableCameraForStreaming;
     /**
      * C type : StartVideoStream_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.StartVideoStream_callback StartVideoStream;
+    public IVRTrackedCamera_FnTable.StartVideoStream_callback StartVideoStream;
     /**
      * C type : StopVideoStream_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.StopVideoStream_callback StopVideoStream;
+    public IVRTrackedCamera_FnTable.StopVideoStream_callback StopVideoStream;
     /**
      * C type : IsVideoStreamActive_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.IsVideoStreamActive_callback IsVideoStreamActive;
+    public IVRTrackedCamera_FnTable.IsVideoStreamActive_callback IsVideoStreamActive;
     /**
      * C type : GetVideoStreamFrame_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetVideoStreamFrame_callback GetVideoStreamFrame;
+    public IVRTrackedCamera_FnTable.GetVideoStreamFrame_callback GetVideoStreamFrame;
     /**
      * C type : ReleaseVideoStreamFrame_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.ReleaseVideoStreamFrame_callback ReleaseVideoStreamFrame;
+    public IVRTrackedCamera_FnTable.ReleaseVideoStreamFrame_callback ReleaseVideoStreamFrame;
     /**
      * C type : SetAutoExposure_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.SetAutoExposure_callback SetAutoExposure;
+    public IVRTrackedCamera_FnTable.SetAutoExposure_callback SetAutoExposure;
     /**
      * C type : PauseVideoStream_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.PauseVideoStream_callback PauseVideoStream;
+    public IVRTrackedCamera_FnTable.PauseVideoStream_callback PauseVideoStream;
     /**
      * C type : ResumeVideoStream_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.ResumeVideoStream_callback ResumeVideoStream;
+    public IVRTrackedCamera_FnTable.ResumeVideoStream_callback ResumeVideoStream;
     /**
      * C type : GetCameraDistortion_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetCameraDistortion_callback GetCameraDistortion;
+    public IVRTrackedCamera_FnTable.GetCameraDistortion_callback GetCameraDistortion;
     /**
      * C type : GetCameraProjection_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetCameraProjection_callback GetCameraProjection;
+    public IVRTrackedCamera_FnTable.GetCameraProjection_callback GetCameraProjection;
     /**
      * C type : GetRecommendedCameraUndistortion_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetRecommendedCameraUndistortion_callback GetRecommendedCameraUndistortion;
+    public IVRTrackedCamera_FnTable.GetRecommendedCameraUndistortion_callback GetRecommendedCameraUndistortion;
     /**
      * C type : SetCameraUndistortion_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.SetCameraUndistortion_callback SetCameraUndistortion;
+    public IVRTrackedCamera_FnTable.SetCameraUndistortion_callback SetCameraUndistortion;
     /**
      * C type : RequestVideoServicesForTool_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.RequestVideoServicesForTool_callback RequestVideoServicesForTool;
+    public IVRTrackedCamera_FnTable.RequestVideoServicesForTool_callback RequestVideoServicesForTool;
     /**
      * C type : ReleaseVideoServicesForTool_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.ReleaseVideoServicesForTool_callback ReleaseVideoServicesForTool;
+    public IVRTrackedCamera_FnTable.ReleaseVideoServicesForTool_callback ReleaseVideoServicesForTool;
     /**
      * C type : GetVideoStreamFrameSharedTextureGL_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.GetVideoStreamFrameSharedTextureGL_callback GetVideoStreamFrameSharedTextureGL;
+    public IVRTrackedCamera_FnTable.GetVideoStreamFrameSharedTextureGL_callback GetVideoStreamFrameSharedTextureGL;
     /**
      * C type : ReleaseVideoStreamFrameSharedTextureGL_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.ReleaseVideoStreamFrameSharedTextureGL_callback ReleaseVideoStreamFrameSharedTextureGL;
+    public IVRTrackedCamera_FnTable.ReleaseVideoStreamFrameSharedTextureGL_callback ReleaseVideoStreamFrameSharedTextureGL;
     /**
      * C type : LockSharedTextureGL_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.LockSharedTextureGL_callback LockSharedTextureGL;
+    public IVRTrackedCamera_FnTable.LockSharedTextureGL_callback LockSharedTextureGL;
     /**
      * C type : UnlockSharedTextureGL_callback*
      */
-    public VR_IVRTrackedCamera_FnTable.UnlockSharedTextureGL_callback UnlockSharedTextureGL;
+    public IVRTrackedCamera_FnTable.UnlockSharedTextureGL_callback UnlockSharedTextureGL;
 
     public interface HasCamera_callback extends Callback {
 
@@ -233,7 +233,7 @@ public class VR_IVRTrackedCamera_FnTable extends Structure {
         void apply(Pointer glSharedTextureHandle);
     };
 
-    public VR_IVRTrackedCamera_FnTable() {
+    public IVRTrackedCamera_FnTable() {
         super();
     }
 
@@ -241,15 +241,15 @@ public class VR_IVRTrackedCamera_FnTable extends Structure {
         return Arrays.asList("HasCamera", "GetCameraFirmwareDescription", "GetCameraFrameDimensions", "SetCameraVideoStreamFormat", "GetCameraVideoStreamFormat", "EnableCameraForStreaming", "StartVideoStream", "StopVideoStream", "IsVideoStreamActive", "GetVideoStreamFrame", "ReleaseVideoStreamFrame", "SetAutoExposure", "PauseVideoStream", "ResumeVideoStream", "GetCameraDistortion", "GetCameraProjection", "GetRecommendedCameraUndistortion", "SetCameraUndistortion", "RequestVideoServicesForTool", "ReleaseVideoServicesForTool", "GetVideoStreamFrameSharedTextureGL", "ReleaseVideoStreamFrameSharedTextureGL", "LockSharedTextureGL", "UnlockSharedTextureGL");
     }
 
-    public VR_IVRTrackedCamera_FnTable(Pointer peer) {
+    public IVRTrackedCamera_FnTable(Pointer peer) {
         super(peer);
     }
 
-    public static class ByReference extends VR_IVRTrackedCamera_FnTable implements Structure.ByReference {
+    public static class ByReference extends IVRTrackedCamera_FnTable implements Structure.ByReference {
 
     };
 
-    public static class ByValue extends VR_IVRTrackedCamera_FnTable implements Structure.ByValue {
+    public static class ByValue extends IVRTrackedCamera_FnTable implements Structure.ByValue {
 
     };
 }
