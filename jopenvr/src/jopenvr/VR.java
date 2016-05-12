@@ -1059,7 +1059,7 @@ public class VR implements Library {
      * @param peError
      * @return
      */
-    public static native Pointer VR_GetGenericInterface(Pointer pchInterfaceVersion, Pointer peError);
+    public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, int peError);
 
     /**
      * Original signature :
@@ -1070,7 +1070,7 @@ public class VR implements Library {
      * @param pchInterfaceVersion
      * @return
      */
-    public static native byte VR_IsInterfaceVersionValid(Pointer pchInterfaceVersion);
+    public static native byte VR_IsInterfaceVersionValid(String pchInterfaceVersion);
 
     /**
      * Original signature :
@@ -1083,7 +1083,10 @@ public class VR implements Library {
      */
     public static native int VR_GetInitToken();
     
-   
+//     /** Returns whether the interface of the specified version exists.
+//	*/
+    
+  
     public static String IVRSystem_Version = "IVRSystem_012";
     public static String IVRApplications_Version = "IVRApplications_005";
     public static String IVRSettings_Version = "IVRSettings_001";
@@ -1119,4 +1122,5 @@ public class VR implements Library {
         
         return vrSystem;
     }
+  
 }
