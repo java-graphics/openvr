@@ -1082,11 +1082,7 @@ public class VR implements Library {
      * @return
      */
     public static native int VR_GetInitToken();
-    
-//     /** Returns whether the interface of the specified version exists.
-//	*/
-    
-  
+
     public static String IVRSystem_Version = "IVRSystem_012";
     public static String IVRApplications_Version = "IVRApplications_005";
     public static String IVRSettings_Version = "IVRSettings_001";

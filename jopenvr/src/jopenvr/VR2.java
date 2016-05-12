@@ -1044,5 +1044,135 @@ public class VR2 implements Library {
         public static final int VRSettingsError_WriteFailed = 2;
         public static final int VRSettingsError_ReadFailed = 3;
     };
+    
+    /**
+     * Global entry points<br>
+     * Original signature :
+     * <code>intptr_t VR_InitInternal(EVRInitError*, EVRApplicationType)</code>
+     *
+     * @param peError
+     * @param eType
+     * @return
+     */
+    public static native Pointer VR_InitInternal(IntBuffer peError, int eType);
 
+    /**
+     * Original signature : <code>void VR_ShutdownInternal()</code>
+     */
+    public static native void VR_ShutdownInternal();
+
+    /**
+     * Original signature : <code>bool VR_IsHmdPresent()</code>
+     *
+     * Returns true if there is an HMD attached. This check is as lightweight as
+     * possible and can be called outside of VR_Init/VR_Shutdown. It should be
+     * used when an application wants to know if initializing VR is a
+     * possibility but isn't ready to take that step yet.
+     *
+     * @return
+     */
+    public static native byte VR_IsHmdPresent();
+
+    /**
+     * Original signature :
+     * <code>intptr_t VR_GetGenericInterface(const char*, EVRInitError*)</code>
+     *
+     * Returns the class of the specified version. This method must be called
+     * after VR_Init. The pointer returned is valid until VR_Shutdown is called.
+     *
+     * @param pchInterfaceVersion
+     * @param peError
+     * @return
+     */
+    public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, IntBuffer peError);
+
+    /**
+     * Original signature : <code>bool VR_IsRuntimeInstalled()</code>
+     *
+     * Returns true if the OpenVR runtime is installed.
+     *
+     * @return
+     */
+    public static native byte VR_IsRuntimeInstalled();
+
+    /**
+     * Original signature :
+     * <code>char* VR_GetVRInitErrorAsSymbol(EVRInitError)</code>
+     *
+     * Returns the name of the enum value for an EVRInitError. This function may
+     * be called outside of VR_Init()/VR_Shutdown().
+     *
+     * @param error
+     * @return
+     */
+    public static native Pointer VR_GetVRInitErrorAsSymbol(int error);
+
+    /**
+     * Original signature :
+     * <code>char* VR_GetVRInitErrorAsEnglishDescription(EVRInitError)</code>
+     *
+     * Returns an english string for an EVRInitError. Applications should call
+     * VR_GetVRInitErrorAsSymbol instead and use that as a key to look up their
+     * own localized error message. This function may be called outside of
+     * VR_Init()/VR_Shutdown().
+     *
+     * @param error
+     * @return
+     */
+    public static native Pointer VR_GetVRInitErrorAsEnglishDescription(int error);
+
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE void *VR_CALLTYPE VR_GetGenericInterface( const char *pchInterfaceVersion, EVRInitError *peError )</code>
+     *
+     * Returns the interface of the specified version. This method must be
+     * called after VR_Init. The pointer returned is valid until VR_Shutdown is
+     * called.
+     *
+     * @param pchInterfaceVersion
+     * @param peError
+     * @return
+     */
+    public static native Pointer VR_GetGenericInterface(String pchInterfaceVersion, int peError);
+
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE bool VR_CALLTYPE VR_IsInterfaceVersionValid( const char *pchInterfaceVersion )</code>
+     *
+     * Returns whether the interface of the specified version exists.
+     *
+     * @param pchInterfaceVersion
+     * @return
+     */
+    public static native byte VR_IsInterfaceVersionValid(String pchInterfaceVersion);
+
+    /**
+     * Original signature :
+     * <code>VR_INTERFACE uint32_t VR_CALLTYPE VR_GetInitToken()</code>
+     *
+     * Returns a token that represents whether the VR interface handles need to
+     * be reloaded
+     *
+     * @return
+     */
+    public static native int VR_GetInitToken();
+    
+    
+    public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
+
+        IVRSystem vrSystem = null;
+
+        VR_InitInternal(error, applicationType);
+
+        COpenVRContext ctx = new COpenVRContext();
+        ctx.clear();
+
+        if (error.get(0) == EVRInitError.VRInitError_None) {
+            
+//            if(vr_is)
+            vrSystem = new IVRSystem();
+        }
+        
+        return vrSystem;
+    }
 }
