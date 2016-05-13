@@ -434,7 +434,7 @@ public class IVRSystem extends Structure {
         void apply(int nFidelityLevel);
     };
 
-    private IVRSystem() {
+    public IVRSystem() {
         super();
     }
 

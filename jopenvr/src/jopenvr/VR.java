@@ -1,6 +1,8 @@
 package jopenvr;
 
 import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
 import java.nio.IntBuffer;
 
@@ -17,6 +19,13 @@ import java.nio.IntBuffer;
  * <a href="http://jna.dev.java.net/">JNA</a>.
  */
 public class VR implements Library {
+
+    public static final String JNA_LIBRARY_NAME = "win64/openvr_api";
+    public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(JNA_LIBRARY_NAME);
+
+    static {
+        Native.register(VR.class, JNA_NATIVE_LIB);
+    }
 
     public static int k_unTrackingStringSize = 32;
     public static int k_unMaxDriverDebugResponseSize = 32768;
@@ -1041,7 +1050,7 @@ public class VR implements Library {
         public static final int VRSettingsError_WriteFailed = 2;
         public static final int VRSettingsError_ReadFailed = 3;
     };
-    
+
     /**
      * Global entry points<br>
      * Original signature :
@@ -1153,53 +1162,36 @@ public class VR implements Library {
      * @return
      */
     public static native int VR_GetInitToken();
-    
-    
+
     public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
 
         IVRSystem vrSystem = null;
 
-        VR.VR_InitInternal(error, applicationType);
-//        VR_InitInternal(error, applicationType);
-
+        VR_InitInternal(error, applicationType);
+        COpenVRContext ctx = new COpenVRContext();
+        ctx.clear();
+                
         if (error.get(0) == 0) {
-            // ok, try and get the vrsystem pointer..
-            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
-//            hmd = new IVRSystem();
-            COpenVRContext ctx = new COpenVRContext.ByValue();
-            ctx.clear();
-        }
-        if (vrSystem == null || error.get(0) != 0) {
-            System.out.println("OpenVR Initialize Result: " + VR.VR_GetVRInitErrorAsEnglishDescription(error.get(0)).getString(0));
-            return null;
-        }
 
-        System.out.println("OpenVR initialized & VR connected.");
+            if (VR_IsInterfaceVersionValid(IVRSystem_Version) != 0) {
 
-        vrSystem.setAutoSynch(false);
-        vrSystem.read();
+//                vrSystem = new IVRSystem();
+                vrSystem = new IVRSystem(VR_GetGenericInterface(IVRSystem_Version, error));
+                
+//                vrSystem.setAutoSynch(false);
+                vrSystem.read();
+
+            } else {
+
+                VR_ShutdownInternal();
+                error.put(0, EVRInitError.VRInitError_Init_InterfaceNotFound);
+            }
+        }
 
         // init controllers for the first time
 //            VRInput._updateConnectedControllers();
-//
 //            // init bounds & chaperone info
-//            VRBounds.init();
-//            
-        
-//        COpenVRContext ctx = new COpenVRContext();
-//        ctx.clear();
-//
-//        if (error.get(0) == EVRInitError.VRInitError_None) {
-////            byte b = VR_IsInterfaceVersionValid(IVROverlay_Version);
-////            if(VR.VR_IsInterfaceVersionValid(IVROverlay_Version))
-//            vrSystem = new IVRSystem(VR.VR_GetGenericInterface(VR.IVRSystem_Version, error));
-//        }
-        if (vrSystem == null) {
-            return null;
-        }
-        vrSystem.setAutoSynch(false);
-        vrSystem.read();
-        
+//            VRBounds.init();       
         return vrSystem;
     }
 }
