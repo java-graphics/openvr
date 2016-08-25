@@ -33,11 +33,11 @@ public class VR implements Library {
     public static int k_unMaxTrackedDeviceCount = 16;
     public static long k_unTrackedDeviceIndexInvalid = 4294967295L;
     /**
-     * No string property will ever be longer than this length
+     * No string property will ever be longer than this length.
      */
     public static int k_unMaxPropertyStringSize = 32768;
     /**
-     * the number of axes in the controller state
+     * the number of axes in the controller state.
      */
     public static int k_unControllerStateAxisCount = 5;
     public static long k_ulOverlayHandleInvalid = 0L;
