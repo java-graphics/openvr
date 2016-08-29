@@ -31,7 +31,8 @@ public class VR implements Library {
     public static int k_unMaxDriverDebugResponseSize = 32768;
     public static int k_unTrackedDeviceIndex_Hmd = 0;
     public static int k_unMaxTrackedDeviceCount = 16;
-    public static long k_unTrackedDeviceIndexInvalid = 4294967295L;
+    public static long k_unTrackedDeviceIndexOther = 4294967294L; //0xFFFFFFFE
+    public static long k_unTrackedDeviceIndexInvalid = 4294967295L; // 0xFFFFFFFF
     /**
      * No string property will ever be longer than this length.
      */
@@ -41,20 +42,22 @@ public class VR implements Library {
      */
     public static int k_unControllerStateAxisCount = 5;
     public static long k_ulOverlayHandleInvalid = 0L;
+    static int k_unScreenshotHandleInvalid = 0;
     public static String IVRSystem_Version = "FnTable:IVRSystem_012";
     public static String IVRExtendedDisplay_Version = "FnTable:IVRExtendedDisplay_001";
+    public static String IVRTrackedCamera_Version = "FnTable:IVRTrackedCamera_003";
     /**
      * The maximum length of an application key.
      */
     public static int k_unMaxApplicationKeyLength = 128;
-    public static String IVRApplications_Version = "FnTable:IVRApplications_005";
+    public static String IVRApplications_Version = "FnTable:IVRApplications_006";
     public static String IVRChaperone_Version = "FnTable:IVRChaperone_003";
     public static String IVRChaperoneSetup_Version = "FnTable:IVRChaperoneSetup_005";
-    public static String IVRCompositor_Version = "FnTable:IVRCompositor_014";
+    public static String IVRCompositor_Version = "FnTable:IVRCompositor_016";
     public static int k_unVROverlayMaxKeyLength = 128;
     public static int k_unVROverlayMaxNameLength = 128;
-    public static int k_unMaxOverlayCount = 32;
-    public static String IVROverlay_Version = "FnTable:IVROverlay_011";
+    public static int k_unMaxOverlayCount = 64;
+    public static String IVROverlay_Version = "FnTable:IVROverlay_013";
     public static String k_pch_Controller_Component_GDC2015 = "gdc2015";
     public static String k_pch_Controller_Component_Base = "base";
     public static String k_pch_Controller_Component_Tip = "tip";
@@ -78,8 +81,12 @@ public class VR implements Library {
     public static String k_pch_SteamVR_LogLevel_Int32 = "loglevel";
     public static String k_pch_SteamVR_IPD_Float = "ipd";
     public static String k_pch_SteamVR_Background_String = "background";
+    public static String k_pch_SteamVR_BackgroundCameraHeight_Float = "backgroundCameraHeight";
+    public static String k_pch_SteamVR_BackgroundDomeRadius_Float = "backgroundDomeRadius";
+    public static String k_pch_SteamVR_Environment_String = "environment";
     public static String k_pch_SteamVR_GridColor_String = "gridColor";
     public static String k_pch_SteamVR_PlayAreaColor_String = "playAreaColor";
+    public static String k_pch_SteamVR_ShowStage_Bool = "showStage";
     public static String k_pch_SteamVR_ActivateMultipleDrivers_Bool = "activateMultipleDrivers";
     public static String k_pch_SteamVR_PowerOffOnExit_Bool = "powerOffOnExit";
     public static String k_pch_SteamVR_StandbyAppRunningTimeout_Float = "standbyAppRunningTimeout";
@@ -93,6 +100,13 @@ public class VR implements Library {
     public static String k_pch_SteamVR_NeverKillProcesses_Bool = "neverKillProcesses";
     public static String k_pch_SteamVR_RenderTargetMultiplier_Float = "renderTargetMultiplier";
     public static String k_pch_SteamVR_AllowReprojection_Bool = "allowReprojection";
+    public static String k_pch_SteamVR_ForceReprojection_Bool = "forceReprojection";
+    public static String k_pch_SteamVR_ForceFadeOnBadTracking_Bool = "forceFadeOnBadTracking";
+    public static String k_pch_SteamVR_DefaultMirrorView_Int32 = "defaultMirrorView";
+    public static String k_pch_SteamVR_ShowMirrorView_Bool = "showMirrorView";
+    public static String k_pch_SteamVR_StartMonitorFromAppLaunch = "startMonitorFromAppLaunch";
+    public static String k_pch_SteamVR_AutoLaunchSteamVROnButtonPress = "autoLaunchSteamVROnButtonPress";
+    public static String k_pch_SteamVR_UseGenericGraphcisDevice_Bool = "useGenericGraphicsDevice";
     public static String k_pch_Lighthouse_Section = "driver_lighthouse";
     public static String k_pch_Lighthouse_DisableIMU_Bool = "disableimu";
     public static String k_pch_Lighthouse_UseDisambiguation_String = "usedisambiguation";
@@ -102,10 +116,6 @@ public class VR implements Library {
     public static String k_pch_Lighthouse_MaxIncidenceAngleDegrees_Float = "maxincidenceangledegrees";
     public static String k_pch_Lighthouse_UseLighthouseDirect_Bool = "uselighthousedirect";
     public static String k_pch_Lighthouse_DBHistory_Bool = "dbhistory";
-    public static String k_pch_Lighthouse_OriginOffsetX_Float = "originoffsetx";
-    public static String k_pch_Lighthouse_OriginOffsetY_Float = "originoffsety";
-    public static String k_pch_Lighthouse_OriginOffsetZ_Float = "originoffsetz";
-    public static String k_pch_Lighthouse_HeadingOffset_Float = "headingoffset";
     public static String k_pch_Null_Section = "driver_null";
     public static String k_pch_Null_EnableNullDriver_Bool = "enable";
     public static String k_pch_Null_SerialNumber_String = "serialNumber";
@@ -120,6 +130,8 @@ public class VR implements Library {
     public static String k_pch_Null_DisplayFrequency_Float = "displayFrequency";
     public static String k_pch_UserInterface_Section = "userinterface";
     public static String k_pch_UserInterface_StatusAlwaysOnTop_Bool = "StatusAlwaysOnTop";
+    public static String k_pch_UserInterface_Screenshots_Bool = "screenshots";
+    public static String k_pch_UserInterface_ScreenshotType_Int = "screenshotType";
     public static String k_pch_Notifications_Section = "notifications";
     public static String k_pch_Notifications_DoNotDisturb_Bool = "DoNotDisturb";
     public static String k_pch_Keyboard_Section = "keyboard";
@@ -163,7 +175,11 @@ public class VR implements Library {
     public static String k_pch_audio_OffPlaybackDevice_String = "offPlaybackDevice";
     public static String k_pch_audio_OffRecordDevice_String = "offRecordDevice";
     public static String k_pch_audio_VIVEHDMIGain = "viveHDMIGain";
+    public static String k_pch_modelskin_Section = "modelskins";
+    public static String IVRScreenshots_Version = "IVRScreenshots_001";
+    public static String IVRResources_Version = "IVRResources_001";
 
+    // OpenVR Enums
     public static class EVREye {
 
         public static final int Eye_Left = 0;
@@ -309,6 +325,9 @@ public class VR implements Library {
         public static final int Prop_DisplayHardwareVersion_Uint64 = 2031;
         public static final int Prop_AudioFirmwareVersion_Uint64 = 2032;
         public static final int Prop_CameraCompatibilityMode_Int32 = 2033;
+        public static final int Prop_ScreenshotHorizontalFieldOfViewDegrees_Float = 2034;
+        public static final int Prop_ScreenshotVerticalFieldOfViewDegrees_Float = 2035;
+        public static final int Prop_DisplaySuppressed_Bool = 2036;
 
         // Properties that are unique to TrackedDeviceClass_Controller
         public static final int Prop_AttachedDeviceId_String = 3000;
@@ -318,6 +337,7 @@ public class VR implements Library {
         public static final int Prop_Axis2Type_Int32 = 3004;    // Return value is of type EVRControllerAxisType
         public static final int Prop_Axis3Type_Int32 = 3005;    // Return value is of type EVRControllerAxisType
         public static final int Prop_Axis4Type_Int32 = 3006;    // Return value is of type EVRControllerAxisType
+        public static final int Prop_ControllerRoleHint_Int32 = 3007;// Return value is of type ETrackedControllerRole
 
         // Properties that are unique to TrackedDeviceClass_TrackingReference
         public static final int Prop_FieldOfViewLeftDegrees_Float = 4000;
@@ -352,12 +372,15 @@ public class VR implements Library {
     };
 
     /**
-     * Allows the applicaiton to control how scene textures are used by the
+     * Allows the application to control how scene textures are used by the
      * compositor when calling Submit.
      */
     public static class EVRSubmitFlags {
 
-        // Simple render path. App submits rendered left and right eye images with no lens distortion correction applied.
+        /**
+         * Simple render path. App submits rendered left and right eye images
+         * with no lens distortion correction applied.
+         */
         public static final int Submit_Default = 0;
         /**
          * App submits final left and right eye images with lens distortion
@@ -368,6 +391,10 @@ public class VR implements Library {
          * the rendered images before calling Submit().
          */
         public static final int Submit_LensDistortionAlreadyApplied = 1;
+        /**
+         * If the texture pointer passed in is actually a renderbuffer (e.g. for
+         * MSAA in OpenGL) then set this flag.
+         */
         public static final int Submit_GlRenderBuffer = 2;
     };
 
@@ -384,6 +411,7 @@ public class VR implements Library {
         public static final int VRState_Ready_Alert = 4;
         public static final int VRState_NotReady = 5;
         public static final int VRState_Standby = 6;
+        public static final int VRState_Ready_Alert_Low = 7;
     };
 
     /**
@@ -403,6 +431,7 @@ public class VR implements Library {
         public static final int VREvent_EnterStandbyMode = 106;
         public static final int VREvent_LeaveStandbyMode = 107;
         public static final int VREvent_TrackedDeviceRoleChanged = 108;
+        public static final int VREvent_WatchdogWakeUpRequested = 109;
 
         public static final int VREvent_ButtonPress = 200;      // data is controller
         public static final int VREvent_ButtonUnpress = 201;    // data is controller
@@ -416,6 +445,7 @@ public class VR implements Library {
         public static final int VREvent_FocusLeave = 304;       // data is overlay
         public static final int VREvent_Scroll = 305;           // data is mouse
         public static final int VREvent_TouchPadMove = 306;     // data is mouse
+        public static final int VREvent_OverlayFocusChanged = 307;     // data is overlay, global event
 
         public static final int VREvent_InputFocusCaptured = 400;       // data is process DEPRECATED
         public static final int VREvent_InputFocusReleased = 401;       // data is process DEPRECATED
@@ -426,6 +456,7 @@ public class VR implements Library {
         // New app got access to draw the scene
         public static final int VREvent_SceneFocusChanged = 405;        // data is process
         public static final int VREvent_InputFocusChanged = 406;        // data is process
+        public static final int VVREvent_SceneApplicationSecondaryRenderingStarted = 407;        // data is process
 
         // Sent to the scene application to request hiding render models temporarily
         public static final int VREvent_HideRenderModels = 410;
@@ -454,6 +485,13 @@ public class VR implements Library {
         public static final int VREvent_OverlaySharedTextureChanged = 513;
         public static final int VREvent_DashboardGuideButtonDown = 514;
         public static final int VREvent_DashboardGuideButtonUp = 515;
+        public static final int VREvent_ScreenshotTriggered = 516;
+        public static final int VREvent_ImageFailed = 517;
+        public static final int VREvent_RequestScreenshot = 520;
+        public static final int VREvent_ScreenshotTaken = 521;
+        public static final int VREvent_ScreenshotFailed = 522;
+        public static final int VREvent_SubmitScreenshotToDashboard = 523;
+        public static final int VREvent_ScreenshotProgressToDashboard = 524;
 
         public static final int VREvent_Notification_Shown = 600;
         public static final int VREvent_Notification_Hidden = 601;
@@ -477,6 +515,8 @@ public class VR implements Library {
         public static final int VREvent_BackgroundSettingHasChanged = 850;
         public static final int VREvent_CameraSettingsHaveChanged = 851;
         public static final int VREvent_ReprojectionSettingHasChanged = 852;
+        public static final int VREvent_ModelSkinSettingsHaveChanged = 853;
+        public static final int VREvent_EnvironmentSettingsHaveChanged = 854;
 
         public static final int VREvent_StatusUpdate = 900;
 
@@ -492,6 +532,8 @@ public class VR implements Library {
         public static final int VREvent_ApplicationTransitionStarted = 1300;
         public static final int VREvent_ApplicationTransitionAborted = 1301;
         public static final int VREvent_ApplicationTransitionNewAppStarted = 1302;
+        public static final int VREvent_ApplicationListUpdated = 1303;
+        public static final int VREvent_ApplicationMimeTypeLoad = 1304;
 
         public static final int VREvent_Compositor_MirrorWindowShown = 1400;
         public static final int VREvent_Compositor_MirrorWindowHidden = 1401;
@@ -652,6 +694,8 @@ public class VR implements Library {
         public static final int VRApplication_Utility = 4;
         // Reserved for vrmonitor
         public static final int VRApplication_VRMonitor = 5;
+        public static final int VRApplication_SteamWatchdog = 6;
+        public static final int VRApplication_Max = 7;
     };
 
     /**
@@ -673,6 +717,7 @@ public class VR implements Library {
         public static final int VRNotificationError_InvalidNotificationId = 100;
         public static final int VRNotificationError_NotificationQueueFull = 101;
         public static final int VRNotificationError_InvalidOverlayHandle = 102;
+        public static final int VRNotificationError_SystemWithUserValueAlreadyExists = 103;
     };
 
     // Please add adequate error description to https://developer.valvesoftware.com/w/index.php?title=Category:SteamVRHelp
@@ -708,6 +753,14 @@ public class VR implements Library {
         public static final int VRInitError_Init_NotSupportedWithCompositor = 122;
         public static final int VRInitError_Init_NotAvailableToUtilityApps = 123;
         public static final int VRInitError_Init_Internal = 124;
+        public static final int VRInitError_Init_HmdDriverIdIsNone = 125;
+        public static final int VRInitError_Init_HmdNotFoundPresenceFailed = 126;
+        public static final int VRInitError_Init_VRMonitorNotFound = 127;
+        public static final int VRInitError_Init_VRMonitorStartupFailed = 128;
+        public static final int VRInitError_Init_LowPowerWatchdogNotSupported = 129;
+        public static final int VRInitError_Init_InvalidApplicationType = 130;
+        public static final int VRInitError_Init_NotAvailableToWatchdogApps = 131;
+        public static final int VRInitError_Init_WatchdogDisabledInSettings = 132;
 
         public static final int VRInitError_Driver_Failed = 200;
         public static final int VRInitError_Driver_Unknown = 201;
@@ -718,6 +771,9 @@ public class VR implements Library {
         public static final int VRInitError_Driver_NotCalibrated = 206;
         public static final int VRInitError_Driver_CalibrationInvalid = 207;
         public static final int VRInitError_Driver_HmdDisplayNotFound = 208;
+        public static final int VRInitError_Driver_TrackedDeviceInterfaceUnknown = 209;
+        public static final int VRInitError_Driver_HmdDriverIdOutOfBounds = 211;
+        public static final int VRInitError_Driver_HmdDisplayMirrored = 212;
 
         public static final int VRInitError_IPC_ServerInitFailed = 300;
         public static final int VRInitError_IPC_ConnectFailed = 301;
@@ -725,10 +781,15 @@ public class VR implements Library {
         public static final int VRInitError_IPC_CompositorInitFailed = 303;
         public static final int VRInitError_IPC_MutexInitFailed = 304;
         public static final int VRInitError_IPC_Failed = 305;
+        public static final int VRInitError_IPC_CompositorConnectFailed = 306;
+        public static final int VRInitError_IPC_CompositorInvalidConnectResponse = 307;
+        public static final int VRInitError_IPC_ConnectFailedAfterMultipleAttempts = 308;
 
         public static final int VRInitError_Compositor_Failed = 400;
         public static final int VRInitError_Compositor_D3D11HardwareRequired = 401;
         public static final int VRInitError_Compositor_FirmwareRequiresUpdate = 402;
+        public static final int VRInitError_Compositor_OverlayInitFailed = 403;
+        public static final int VRInitError_Compositor_ScreenshotsInitFailed = 404;
 
         public static final int VRInitError_VendorSpecific_UnableToConnectToOculusRuntime = 1000;
 
@@ -748,6 +809,66 @@ public class VR implements Library {
 
         public static final int EVRInitError_VRInitError_Steam_SteamInstallationNotFound = 2000;
     };
+
+    public static class EVRScreenshotType {
+
+        public static final int VRScreenshotType_None = 0;
+        /**
+         * left eye only
+         */
+        public static final int VRScreenshotType_Mono = 1;
+        public static final int VRScreenshotType_Stereo = 2;
+        public static final int VRScreenshotType_Cubemap = 3;
+        public static final int VRScreenshotType_MonoPanorama = 4;
+        public static final int VRScreenshotType_StereoPanorama = 5;
+    }
+
+    public static class EVRScreenshotPropertyFilenames {
+
+        public static final int VRScreenshotPropertyFilenames_Preview = 0;
+        public static final int VRScreenshotPropertyFilenames_VR = 1;
+    }
+
+    public static class EVRTrackedCameraError {
+
+        public static final int VRTrackedCameraError_None = 0;
+        public static final int VRTrackedCameraError_OperationFailed = 100;
+        public static final int VRTrackedCameraError_InvalidHandle = 101;
+        public static final int VRTrackedCameraError_InvalidFrameHeaderVersion = 102;
+        public static final int VRTrackedCameraError_OutOfHandles = 103;
+        public static final int VRTrackedCameraError_IPCFailure = 104;
+        public static final int VRTrackedCameraError_NotSupportedForThisDevice = 105;
+        public static final int VRTrackedCameraError_SharedMemoryFailure = 106;
+        public static final int VRTrackedCameraError_FrameBufferingFailure = 107;
+        public static final int VRTrackedCameraError_StreamSetupFailure = 108;
+        public static final int VRTrackedCameraError_InvalidGLTextureId = 109;
+        public static final int VRTrackedCameraError_InvalidSharedTextureHandle = 110;
+        public static final int VRTrackedCameraError_FailedToGetGLTextureId = 111;
+        public static final int VRTrackedCameraError_SharedTextureFailure = 112;
+        public static final int VRTrackedCameraError_NoFrameAvailable = 113;
+        public static final int VRTrackedCameraError_InvalidArgument = 114;
+        public static final int VRTrackedCameraError_InvalidFrameBufferSize = 115;
+
+    }
+
+    public static class EVRTrackedCameraFrameType {
+
+        /**
+         * This is the camera video frame size in pixels, still distorted.
+         */
+        public static final int VRTrackedCameraFrameType_Distorted = 0;
+        /**
+         * In pixels, an undistorted inscribed rectangle region without invalid
+         * regions. This size is subject to changes shortly.
+         */
+        public static final int VRTrackedCameraFrameType_Undistorted = 1;
+        /**
+         * In pixels, maximum undistorted with invalid regions. Non zero alpha
+         * component identifies valid regions.
+         */
+        public static final int VRTrackedCameraFrameType_MaximumUndistorted = 2;
+        public static final int MAX_CAMERA_FRAME_TYPES = 3;
+    }
 
     /**
      * Used for all errors reported by the IVRApplications class
@@ -872,6 +993,7 @@ public class VR implements Library {
     public static class EVRCompositorError {
 
         public static final int VRCompositorError_None = 0;
+        public static final int VRCompositorError_RequestFailed = 1;
         public static final int VRCompositorError_IncompatibleVersion = 100;
         public static final int VRCompositorError_DoNotHaveFocus = 101;
         public static final int VRCompositorError_InvalidTexture = 102;
@@ -909,37 +1031,61 @@ public class VR implements Library {
      */
     public static class VROverlayFlags {
 
-        public static final int VROverlayFlags_None = 0;
+        public static final int None = 0;
 
         // The following only take effect when rendered using the high quality render path (see SetHighQualityOverlay).
-        public static final int VROverlayFlags_Curved = 1;
-        public static final int VROverlayFlags_RGSS4X = 2;
+        public static final int Curved = 1;
+        public static final int RGSS4X = 2;
 
         // Set this flag on a dashboard overlay to prevent a tab from showing up for that overlay
-        public static final int VROverlayFlags_NoDashboardTab = 3;
+        public static final int NoDashboardTab = 3;
 
         // Set this flag on a dashboard that is able to deal with gamepad focus events
-        public static final int VROverlayFlags_AcceptsGamepadEvents = 4;
+        public static final int AcceptsGamepadEvents = 4;
 
         // Indicates that the overlay should dim/brighten to show gamepad focus
-        public static final int VROverlayFlags_ShowGamepadFocus = 5;
+        public static final int ShowGamepadFocus = 5;
 
         // When in VROverlayInputMethod_Mouse you can optionally enable sending VRScroll_t 
-        public static final int VROverlayFlags_SendVRScrollEvents = 6;
-        public static final int VROverlayFlags_SendVRTouchpadEvents = 7;
+        public static final int SendVRScrollEvents = 6;
+        public static final int SendVRTouchpadEvents = 7;
         /**
          * If set this will render a vertical scroll wheel on the primary
          * controller, only needed if not using
          * VROverlayFlags_SendVRScrollEvents but you still want to represent a
          * scroll wheel.
          */
-        public static final int VROverlayFlags_ShowTouchPadScrollWheel = 8;
+        public static final int ShowTouchPadScrollWheel = 8;
         /**
          * If this is set ownership and render access to the overlay are
          * transferred to the new scene process on a call to
          * IVRApplications::LaunchInternalProcess.
          */
-        public static final int VROverlayFlags_TransferOwnershipToInternalProcess = 9;
+        public static final int TransferOwnershipToInternalProcess = 9;
+        /**
+         * If set, renders 50% of the texture in each eye, side by side <br>
+         * Texture is left/right
+         */
+        public static final int SideBySide_Parallel = 10;
+        /**
+         * If set, renders 50% of the texture in each eye, side by side <br>
+         * Texture is crossed and right/left
+         */
+        public static final int SideBySide_Crossed = 11;
+        /**
+         * Texture is a panorama
+         */
+        public static final int Panorama = 12;
+        /**
+         * Texture is a stereo panorama
+         */
+        public static final int StereoPanorama = 13;
+        /**
+         * If this is set on an overlay owned by the scene application that
+         * overlay will be sorted with the "Other" overlays on top of all other
+         * scene overlays
+         */
+        public static final int SortWithNonSceneOverlays = 14;
     };
 
     // Input modes for the Big Picture gamepad text entry
@@ -982,8 +1128,11 @@ public class VR implements Library {
         public static final int VRRenderModelError_InvalidModel = 301;
         public static final int VRRenderModelError_NoShapes = 302;
         public static final int VRRenderModelError_MultipleShapes = 303;
-        public static final int VRRenderModelError_TooManyIndices = 304;
+        public static final int VRRenderModelError_TooManyVertices = 304;
         public static final int VRRenderModelError_MultipleTextures = 305;
+        public static final int VRRenderModelError_BufferTooSmall = 306;
+        public static final int VRRenderModelError_NotEnoughNormals = 307;
+        public static final int VRRenderModelError_NotEnoughTexCoords = 308;
         public static final int VRRenderModelError_InvalidTexture = 400;
     };
 
@@ -1003,13 +1152,20 @@ public class VR implements Library {
          * time set by the user. They are used for things like information and
          * chat messages that do not require user interaction.
          */
-        public static final int EVRNotificationType_Transient = 0;
+        public static final int Transient = 0;
         /**
          * Persistent notifications are shown to the user until they are hidden
          * by calling RemoveNotification(). They are used for things like phone
          * calls and alarms that require user interaction.
          */
-        public static final int EVRNotificationType_Persistent = 1;
+        public static final int Persistent = 1;
+        /**
+         * System notifications are shown no matter what. It is expected, that
+         * the ulUserValue is used as ID. If there is already a system
+         * notification in the queue with that ID it is not accepted into the
+         * queue to prevent spamming with system notification
+         */
+        public static final int Transient_SystemWithUserValue = 2;
     };
 
     public static class EVRNotificationStyle {
@@ -1050,6 +1206,16 @@ public class VR implements Library {
         public static final int VRSettingsError_WriteFailed = 2;
         public static final int VRSettingsError_ReadFailed = 3;
     };
+
+    public static class EVRScreenshotError {
+
+        public static final int VRScreenshotError_None = 0;
+        public static final int VVRScreenshotError_RequestFailed = 1;
+        public static final int VRScreenshotError_IncompatibleVersion = 100;
+        public static final int VRScreenshotError_NotFound = 101;
+        public static final int VRScreenshotError_BufferTooSmall = 102;
+        public static final int VRScreenshotError_ScreenshotAlreadyInProgress = 108;
+    }
 
     /**
      * Global entry points<br>
@@ -1170,14 +1336,14 @@ public class VR implements Library {
         VR_InitInternal(error, applicationType);
         COpenVRContext ctx = new COpenVRContext();
         ctx.clear();
-                
+
         if (error.get(0) == 0) {
 
             if (VR_IsInterfaceVersionValid(IVRSystem_Version) != 0) {
 
 //                vrSystem = new IVRSystem();
                 vrSystem = new IVRSystem(VR_GetGenericInterface(IVRSystem_Version, error));
-                
+
 //                vrSystem.setAutoSynch(false);
                 vrSystem.read();
 
