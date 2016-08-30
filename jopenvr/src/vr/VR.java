@@ -182,7 +182,7 @@ public class VR implements Library {
     // OpenVR Enums
     public static class EVREye {
 
-        public static final int Eye_Left = 0;
+        public static final int EYE_Left = 0;
         public static final int Eye_Right = 1;
         // only for jovr
         public static final int Max = 2;
