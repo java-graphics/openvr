@@ -15,7 +15,7 @@ public class Texture_t extends Structure {
     /**
      * void *<br>
      * C type : void*
-     * 
+     *
      * Native d3d texture pointer or GL texture id.
      */
     public int handle;
@@ -49,6 +49,10 @@ public class Texture_t extends Structure {
      */
     public Texture_t(int handle, int eType, int eColorSpace) {
         super();
+        set(handle, eType, eColorSpace);
+    }
+
+    public final void set(int handle, int eType, int eColorSpace) {
         this.handle = handle;
         this.eType = eType;
         this.eColorSpace = eColorSpace;
