@@ -112,7 +112,8 @@ public class IVRRenderModels_FnTable extends Structure {
 
     public interface LoadTexture_Async_callback extends Callback {
 
-        int apply(int textureId, PointerByReference ppTexture);
+//        int apply(int textureId, PointerByReference ppTexture);
+        int apply(int textureId, RenderModel_TextureMap_t.ByReference ppTexture);
     };
 
     public interface FreeTexture_callback extends Callback {

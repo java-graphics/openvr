@@ -1329,6 +1329,7 @@ public class VR implements Library {
      */
     public static native int VR_GetInitToken();
 
+    // TODO only VR_InitInternal
     public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
 
         IVRSystem vrSystem = null;
