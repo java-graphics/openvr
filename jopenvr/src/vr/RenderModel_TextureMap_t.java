@@ -23,6 +23,10 @@ public class RenderModel_TextureMap_t extends Structure {
      * Map texture data. All textures are RGBA with 8 bits per channel per pixel. Data size is width * height * 4ub.
      */
     public Pointer rubTextureMapData;
+    
+    public int dataSize() {
+        return unWidth * unHeight * 4 * Byte.BYTES;
+    }
 
     public RenderModel_TextureMap_t() {
         super();
