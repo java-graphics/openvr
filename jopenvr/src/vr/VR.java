@@ -20,7 +20,7 @@ import java.nio.IntBuffer;
  */
 public class VR implements Library {
 
-    public static final String JNA_LIBRARY_NAME = "win64/openvr_api";
+    public static final String JNA_LIBRARY_NAME = "openvr_api";
     public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(JNA_LIBRARY_NAME);
 
     static {
