@@ -52,6 +52,7 @@ public class RenderModel_TextureMap_t extends Structure {
 
     public RenderModel_TextureMap_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends RenderModel_TextureMap_t implements Structure.ByReference {

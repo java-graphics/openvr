@@ -1329,7 +1329,13 @@ public class VR implements Library {
      */
     public static native int VR_GetInitToken();
 
-    // TODO only VR_InitInternal
+    /**
+     * Finds the active installation of vrclient.dll and initializes it.
+     *
+     * @param error
+     * @param applicationType
+     * @return
+     */
     public static IVRSystem VR_Init(IntBuffer error, int applicationType) {
 
         IVRSystem vrSystem = null;
@@ -1338,15 +1344,11 @@ public class VR implements Library {
         COpenVRContext ctx = new COpenVRContext();
         ctx.clear();
 
-        if (error.get(0) == 0) {
+        if (error.get(0) == EVRInitError.VRInitError_None) {
 
             if (VR_IsInterfaceVersionValid(IVRSystem_Version) != 0) {
 
-//                vrSystem = new IVRSystem();
                 vrSystem = new IVRSystem(VR_GetGenericInterface(IVRSystem_Version, error));
-
-//                vrSystem.setAutoSynch(false);
-                vrSystem.read();
 
             } else {
 
@@ -1354,11 +1356,13 @@ public class VR implements Library {
                 error.put(0, EVRInitError.VRInitError_Init_InterfaceNotFound);
             }
         }
-
-        // init controllers for the first time
-//            VRInput._updateConnectedControllers();
-//            // init bounds & chaperone info
-//            VRBounds.init();       
         return vrSystem;
+    }
+
+    /**
+     * Unloads vrclient.dll. Any interface pointers from the interface are invalid after this point.
+     */
+    public static void VR_Shutdown() {
+        VR_ShutdownInternal();
     }
 }

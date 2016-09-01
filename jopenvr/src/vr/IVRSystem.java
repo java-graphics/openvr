@@ -434,7 +434,10 @@ public class IVRSystem extends Structure {
         void apply(int nFidelityLevel);
     };
 
-    public IVRSystem() {
+    /**
+     * Private since it shouldn't be used externally
+     */
+    private IVRSystem() {
         super();
     }
 
@@ -458,6 +461,7 @@ public class IVRSystem extends Structure {
 
     public IVRSystem(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRSystem implements Structure.ByReference {

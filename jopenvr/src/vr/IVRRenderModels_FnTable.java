@@ -205,6 +205,7 @@ public class IVRRenderModels_FnTable extends Structure {
 
     public IVRRenderModels_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRRenderModels_FnTable implements Structure.ByReference {

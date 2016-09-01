@@ -358,6 +358,7 @@ public class IVRCompositor_FnTable extends Structure {
 
     public IVRCompositor_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRCompositor_FnTable implements Structure.ByReference {
