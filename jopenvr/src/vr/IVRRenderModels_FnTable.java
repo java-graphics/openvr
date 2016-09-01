@@ -147,7 +147,7 @@ public class IVRRenderModels_FnTable extends Structure {
 
     public interface GetComponentCount_callback extends Callback {
 
-        int apply(Pointer pchRenderModelName);
+        int apply(String pchRenderModelName);
     };
 
     public interface GetComponentName_callback extends Callback {
