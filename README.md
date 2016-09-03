@@ -1,4 +1,4 @@
-# jopenvr
+# openvr
 Java OpenVR binding
 
 In sync with original OpenVR 1.02. It includes several enhances, like:
