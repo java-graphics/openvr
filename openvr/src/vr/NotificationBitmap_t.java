@@ -48,6 +48,7 @@ public class NotificationBitmap_t extends Structure {
 
     public NotificationBitmap_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends NotificationBitmap_t implements Structure.ByReference {

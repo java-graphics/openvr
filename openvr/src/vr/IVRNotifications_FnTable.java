@@ -53,6 +53,7 @@ public class IVRNotifications_FnTable extends Structure {
 
     public IVRNotifications_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRNotifications_FnTable implements Structure.ByReference {

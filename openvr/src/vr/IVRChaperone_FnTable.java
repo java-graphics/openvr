@@ -119,6 +119,7 @@ public class IVRChaperone_FnTable extends Structure {
 
     public IVRChaperone_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRChaperone_FnTable implements Structure.ByReference {

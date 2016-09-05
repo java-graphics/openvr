@@ -64,6 +64,7 @@ public class IVRExtendedDisplay_FnTable extends Structure {
 
     public IVRExtendedDisplay_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRExtendedDisplay_FnTable implements Structure.ByReference {

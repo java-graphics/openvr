@@ -47,6 +47,7 @@ public class HiddenAreaMesh_t extends Structure {
 
     public HiddenAreaMesh_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HiddenAreaMesh_t implements Structure.ByReference {

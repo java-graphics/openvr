@@ -57,6 +57,7 @@ public class CameraVideoStreamFrame_t extends Structure {
 
     public CameraVideoStreamFrame_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends CameraVideoStreamFrame_t implements Structure.ByReference {

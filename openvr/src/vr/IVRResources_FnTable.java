@@ -34,6 +34,7 @@ public class IVRResources_FnTable extends Structure {
 
     public IVRResources_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public interface LoadSharedResource_callback extends Callback {

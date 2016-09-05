@@ -151,6 +151,7 @@ public class IVRTrackedCamera_FnTable extends Structure {
 
     public IVRTrackedCamera_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRTrackedCamera_FnTable implements Structure.ByReference {

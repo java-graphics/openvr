@@ -67,6 +67,7 @@ public class DistortionCoordinates_t extends Structure {
 
     public DistortionCoordinates_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends DistortionCoordinates_t implements Structure.ByReference {

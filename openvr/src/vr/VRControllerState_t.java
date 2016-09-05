@@ -60,6 +60,7 @@ public class VRControllerState_t extends Structure {
 
     public VRControllerState_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VRControllerState_t implements Structure.ByReference {

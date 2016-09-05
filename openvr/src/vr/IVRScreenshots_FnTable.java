@@ -100,6 +100,7 @@ public class IVRScreenshots_FnTable extends Structure {
 
     public IVRScreenshots_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRScreenshots_FnTable implements Structure.ByReference {

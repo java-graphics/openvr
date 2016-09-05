@@ -60,6 +60,7 @@ public class Texture_t extends Structure {
 
     public Texture_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends Texture_t implements Structure.ByReference {

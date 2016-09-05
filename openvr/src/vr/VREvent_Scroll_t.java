@@ -35,6 +35,7 @@ public class VREvent_Scroll_t extends Structure {
 
     public VREvent_Scroll_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Scroll_t implements Structure.ByReference {

@@ -36,6 +36,7 @@ public class HmdColor_t extends Structure {
 
     public HmdColor_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdColor_t implements Structure.ByReference {

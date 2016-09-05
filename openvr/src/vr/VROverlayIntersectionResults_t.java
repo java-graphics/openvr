@@ -50,6 +50,7 @@ public class VROverlayIntersectionResults_t extends Structure {
 
     public VROverlayIntersectionResults_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VROverlayIntersectionResults_t implements Structure.ByReference {

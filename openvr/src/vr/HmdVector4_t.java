@@ -47,6 +47,7 @@ public class HmdVector4_t extends Structure {
 
     public HmdVector4_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdVector4_t implements Structure.ByReference {

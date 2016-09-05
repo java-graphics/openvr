@@ -54,6 +54,7 @@ public class RenderModel_ComponentState_t extends Structure {
 
     public RenderModel_ComponentState_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends RenderModel_ComponentState_t implements Structure.ByReference {

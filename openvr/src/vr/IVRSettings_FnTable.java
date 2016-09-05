@@ -133,6 +133,7 @@ public class IVRSettings_FnTable extends Structure {
 
     public IVRSettings_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRSettings_FnTable implements Structure.ByReference {

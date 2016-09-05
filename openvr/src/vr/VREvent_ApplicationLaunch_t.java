@@ -31,6 +31,7 @@ public class VREvent_ApplicationLaunch_t extends Structure {
 
     public VREvent_ApplicationLaunch_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     @Override

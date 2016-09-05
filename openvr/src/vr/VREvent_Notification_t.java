@@ -34,6 +34,7 @@ public class VREvent_Notification_t extends Structure {
 
     public VREvent_Notification_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Notification_t implements Structure.ByReference {

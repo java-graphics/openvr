@@ -30,6 +30,7 @@ public class VREvent_SeatedZeroPoseReset_t extends Structure {
 
     public VREvent_SeatedZeroPoseReset_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_SeatedZeroPoseReset_t implements Structure.ByReference {

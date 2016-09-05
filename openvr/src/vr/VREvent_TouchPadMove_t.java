@@ -46,6 +46,7 @@ public class VREvent_TouchPadMove_t extends Structure {
 
     public VREvent_TouchPadMove_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_TouchPadMove_t implements Structure.ByReference {

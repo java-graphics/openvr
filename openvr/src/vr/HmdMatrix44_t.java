@@ -47,6 +47,7 @@ public class HmdMatrix44_t extends Structure {
 
     public HmdMatrix44_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdMatrix44_t implements Structure.ByReference {

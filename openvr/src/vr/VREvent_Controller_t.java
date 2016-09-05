@@ -32,6 +32,7 @@ public class VREvent_Controller_t extends Structure {
 
     public VREvent_Controller_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Controller_t implements Structure.ByReference {

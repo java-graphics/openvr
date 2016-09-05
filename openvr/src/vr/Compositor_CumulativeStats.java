@@ -38,6 +38,7 @@ public class Compositor_CumulativeStats extends Structure {
 
     public Compositor_CumulativeStats(Pointer peer) {
         super(peer);
+        read();
     }
 
     @Override

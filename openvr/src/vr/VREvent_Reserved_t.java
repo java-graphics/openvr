@@ -32,6 +32,7 @@ public class VREvent_Reserved_t extends Structure {
 
     public VREvent_Reserved_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Reserved_t implements Structure.ByReference {

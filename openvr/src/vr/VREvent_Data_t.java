@@ -199,6 +199,7 @@ public class VREvent_Data_t extends Union {
 
     public VREvent_Data_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Data_t implements com.sun.jna.Structure.ByReference {

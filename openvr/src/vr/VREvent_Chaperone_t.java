@@ -32,6 +32,7 @@ public class VREvent_Chaperone_t extends Structure {
 
     public VREvent_Chaperone_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Chaperone_t implements Structure.ByReference {

@@ -313,6 +313,7 @@ public class IVRApplications_FnTable extends Structure {
 
     public IVRApplications_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVRApplications_FnTable implements Structure.ByReference {

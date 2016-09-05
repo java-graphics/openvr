@@ -46,6 +46,7 @@ public class HmdQuad_t extends Structure {
 
     public HmdQuad_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdQuad_t implements Structure.ByReference {

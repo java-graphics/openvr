@@ -35,6 +35,7 @@ public class Compositor_OverlaySettings extends Structure {
 
     public Compositor_OverlaySettings(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends Compositor_OverlaySettings implements Structure.ByReference {

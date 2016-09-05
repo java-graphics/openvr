@@ -68,6 +68,7 @@ public class TrackedDevicePose_t extends Structure {
 
     public TrackedDevicePose_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends TrackedDevicePose_t implements Structure.ByReference {

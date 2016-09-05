@@ -140,6 +140,7 @@ public class COpenVRContext extends Structure {
 
     public COpenVRContext(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends COpenVRContext implements Structure.ByReference {

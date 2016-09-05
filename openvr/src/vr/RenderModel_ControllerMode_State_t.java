@@ -31,6 +31,7 @@ public class RenderModel_ControllerMode_State_t extends Structure {
 
     public RenderModel_ControllerMode_State_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends RenderModel_ControllerMode_State_t implements Structure.ByReference {

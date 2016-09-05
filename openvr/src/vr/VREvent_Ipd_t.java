@@ -30,6 +30,7 @@ public class VREvent_Ipd_t extends Structure {
 
     public VREvent_Ipd_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Ipd_t implements Structure.ByReference {

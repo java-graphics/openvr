@@ -63,6 +63,7 @@ public class RenderModel_Vertex_t extends Structure {
 
     public RenderModel_Vertex_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public void toDbb(ByteBuffer buffer, int index) {

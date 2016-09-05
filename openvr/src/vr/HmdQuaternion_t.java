@@ -42,6 +42,7 @@ public class HmdQuaternion_t extends Structure {
 
     public HmdQuaternion_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdQuaternion_t implements Structure.ByReference {

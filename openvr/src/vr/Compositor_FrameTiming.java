@@ -118,6 +118,7 @@ public class Compositor_FrameTiming extends Structure {
 
     public Compositor_FrameTiming(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends Compositor_FrameTiming implements Structure.ByReference {

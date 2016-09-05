@@ -50,6 +50,7 @@ public class HmdVector3_t extends Structure {
 
     public HmdVector3_t(Pointer peer) {
         super(peer);
+        read();
     }
     
     public void toDbb(ByteBuffer buffer, int index) {     

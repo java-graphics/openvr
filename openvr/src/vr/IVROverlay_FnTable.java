@@ -718,6 +718,7 @@ public class IVROverlay_FnTable extends Structure {
 
     public IVROverlay_FnTable(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends IVROverlay_FnTable implements Structure.ByReference {

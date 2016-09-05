@@ -35,6 +35,7 @@ public class VREvent_Mouse_t extends Structure {
 
     public VREvent_Mouse_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Mouse_t implements Structure.ByReference {

@@ -30,6 +30,7 @@ public class VREvent_PerformanceTest_t extends Structure {
 
     public VREvent_PerformanceTest_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_PerformanceTest_t implements Structure.ByReference {

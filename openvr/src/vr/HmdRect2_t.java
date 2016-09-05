@@ -42,6 +42,7 @@ public class HmdRect2_t extends Structure {
 
     public HmdRect2_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends HmdRect2_t implements Structure.ByReference {

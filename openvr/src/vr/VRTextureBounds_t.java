@@ -39,6 +39,7 @@ public class VRTextureBounds_t extends Structure {
 
     public VRTextureBounds_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VRTextureBounds_t implements Structure.ByReference {

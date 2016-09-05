@@ -42,6 +42,7 @@ public class CameraVideoStreamFrameHeader_t extends Structure {
 
     public CameraVideoStreamFrameHeader_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     @Override

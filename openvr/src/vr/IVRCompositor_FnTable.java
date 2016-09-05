@@ -340,6 +340,7 @@ public class IVRCompositor_FnTable extends Structure {
 
     public IVRCompositor_FnTable() {
         super();
+        read();
     }
 
     protected List<?> getFieldOrder() {

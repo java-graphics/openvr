@@ -32,6 +32,7 @@ public class VREvent_Overlay_t extends Structure {
 
     public VREvent_Overlay_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Overlay_t implements Structure.ByReference {

@@ -29,6 +29,7 @@ public class VREvent_ScreenshotProgress_t extends Structure {
 
     public VREvent_ScreenshotProgress_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     @Override

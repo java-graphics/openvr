@@ -45,6 +45,7 @@ public class VREvent_Keyboard_t extends Structure {
 
     public VREvent_Keyboard_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VREvent_Keyboard_t implements Structure.ByReference {

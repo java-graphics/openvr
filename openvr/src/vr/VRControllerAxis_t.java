@@ -36,6 +36,7 @@ public class VRControllerAxis_t extends Structure {
 
     public VRControllerAxis_t(Pointer peer) {
         super(peer);
+        read();
     }
 
     public static class ByReference extends VRControllerAxis_t implements Structure.ByReference {
