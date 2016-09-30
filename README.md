@@ -1,4 +1,6 @@
-# openvr
+
+[![Build Status](https://travis-ci.org/alicanalbayrak/openvr.svg?branch=master)](https://travis-ci.org/alicanalbayrak/openvr)
+# openvr 
 Java OpenVR binding
 
 In sync with original OpenVR 1.02. It includes several enhances, like:
