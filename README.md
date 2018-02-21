@@ -1,3 +1,7 @@
+This project isn't being worked anymore, use [this](https://github.com/kotlin-graphics/openvr) instead.
+
+If you would like to continue it, let me know
+
 
 [![Build Status](https://travis-ci.org/alicanalbayrak/openvr.svg?branch=master)](https://travis-ci.org/alicanalbayrak/openvr)
 # openvr 
